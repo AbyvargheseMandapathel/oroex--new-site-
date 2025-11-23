@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "icon": "Installation",
+        "title": "Installation",
+        "description": "Expert supply, installation, and commissioning of industrial equipment."
+    },
+    {
+        "id": 2,
+        "icon": "Maintenance",
+        "title": "Maintenance",
+        "description": "Routine maintenance to maximize uptime and ensure smooth operation."
+    },
+    {
+        "id": 3,
+        "icon": "OnshoreOffshore",
+        "title": "Onshore & Offshore",
+        "description": "Tailored electrical solutions for industrial sectors."
+    },
+    {
+        "id": 4,
+        "icon": "OffshoreSolutions",
+        "title": "Offshore Solutions",
+        "description": "Solutions for offshore oil & gas industries."
+    },
+    {
+        "id": 5,
+        "icon": "Assembly",
+        "title": "Assembly",
+        "description": "Custom-built electric assemblies, certified and tested."
+    },
+    {
+        "id": 6,
+        "icon": "SolarSolutions",
+        "title": "Solar Solutions",
+        "description": "Cost-saving solar power systems for industrial sites."
+    }
+]
