@@ -1,0 +1,67 @@
+.header-three-wrapper {
+    position: relative;
+    width: 100%;
+    height: 300vh;
+    /* 3x viewport height for scroll effect */
+}
+
+.header-three-container {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-three-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    transition: opacity 1s ease-in-out;
+}
+
+.header-three-video.active {
+    opacity: 1;
+}
+
+.header-three-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Stronger gradient for better logo visibility */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 40%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0.9) 100%);
+    z-index: 0;
+}
+
+.header-three-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-three-logo {
+    width: 20vw;
+    max-width: 300px;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+}
+
+@media (max-width: 768px) {
+    .header-three-logo {
+        width: 40vw;
+    }
+}
