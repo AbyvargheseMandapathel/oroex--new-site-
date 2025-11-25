@@ -1,0 +1,98 @@
+.navbar-one-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    /* Ensure it doesn't overlap content too much or handle spacing in parent */
+}
+
+.navbar-one {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-radius: 50px;
+    /* Pill shape */
+    padding: 10px 30px;
+    width: 100%;
+    max-width: 1200px;
+    /* Adjust as needed */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    /* Subtle shadow */
+}
+
+.navbar-one-logo img {
+    height: 30px;
+    /* Adjust based on actual logo aspect ratio */
+    display: block;
+}
+
+.navbar-one-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.navbar-one-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.navbar-one-link:hover {
+    color: #d3002d;
+    /* Match button color */
+}
+
+.navbar-one-action .contact-btn {
+    background-color: #d3002d;
+    /* Red color from image */
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.navbar-one-action .contact-btn:hover {
+    background-color: #b00025;
+}
+
+.navbar-one-mobile-menu {
+    display: none;
+    /* Hide hamburger on desktop */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-one-links {
+        display: none;
+        /* Hide links on mobile */
+    }
+
+    .navbar-one-action {
+        display: none;
+        /* Hide Contact Us button on mobile */
+    }
+
+    .navbar-one-mobile-menu {
+        display: block;
+        /* Show hamburger on mobile */
+        cursor: pointer;
+    }
+
+    .navbar-one {
+        padding: 10px 20px;
+    }
+}

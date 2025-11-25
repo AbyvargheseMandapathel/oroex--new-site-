@@ -85,7 +85,7 @@ const HeaderTwo = () => {
                     className="header-two-content"
                     style={{ transform: `scale(${scale})` }}
                 >
-                    <img src={logo} alt="OroEx Logo" className="header-logo" />
+                    <h1 className="header-two-title">Industrial Excellence</h1>
                 </div>
             </div>
         </div>
