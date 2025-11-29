@@ -196,7 +196,7 @@ const ProductsTwelve = () => {
                 {/* Right Stack Area */}
                 <div className="p12-stack-area">
                     <div className="p12-main-header">
-                        <h2>OUR CAPABILITIES</h2>
+                        <h2>OUR Products</h2>
                         <p className="p12-subheading">
                             Explore our range of industrial solutions
                         </p>

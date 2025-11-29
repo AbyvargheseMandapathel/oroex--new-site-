@@ -170,14 +170,8 @@
 }
 
 .s7-icon-large {
-    color: #FFD700;
-    /* Gold accent */
-}
-
-.s7-item-title {
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 1.1;
+    color: #FF0000;
+    /* Red accent */
 }
 
 .s7-desc {
