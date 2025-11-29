@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "title": "Cast Iron Flameproof Panel",
+        "description": "Delivered ATEX & IECEx certified DB panels for an offshore rig in Abu Dhabi. Built with SS 316L Ex d enclosures, rated IP66, and certified for Zone 1 & 21. Designed for -20°C to +50°C, with marine-grade mounting and H2S resistance.",
+        "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000",
+        "link": "#"
+    },
+    {
+        "id": 2,
+        "title": "Heat Tracing Panel",
+        "description": "Advanced heat tracing control panels designed for temperature maintenance in industrial pipelines. Features precise temperature monitoring and fail-safe protection mechanisms.",
+        "image": "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1000",
+        "link": "#"
+    },
+    {
+        "id": 3,
+        "title": "Ex de Socket DB",
+        "description": "Explosion-proof socket distribution boards engineered for hazardous environments. Ensures safe power distribution with robust interlocking mechanisms and high-grade corrosion resistance.",
+        "image": "https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&q=80&w=1000",
+        "link": "#"
+    },
+    {
+        "id": 4,
+        "title": "Ex d DB with 125A Socket Inlet",
+        "description": "Heavy-duty distribution board with 125A socket inlet, designed for high-power applications in Zone 1 areas. Features rugged construction and ease of maintenance.",
+        "image": "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&q=80&w=1000",
+        "link": "#"
+    },
+    {
+        "id": 5,
+        "title": "Ex de Socket DB (Type 2)",
+        "description": "Variant of our standard Ex de Socket DB with enhanced modularity for flexible site deployment. Certified for extreme weather conditions.",
+        "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=1000",
+        "link": "#"
+    }
+]
