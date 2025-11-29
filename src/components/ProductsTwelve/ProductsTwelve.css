@@ -54,6 +54,7 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 0.5rem;
+    color: #fff;
 }
 
 .p12-sidebar-line {
@@ -95,23 +96,63 @@
     height: 100%;
     position: relative;
     display: flex;
+    flex-direction: column;
+    /* Column layout to stack header and cards */
+    justify-content: flex-start;
+    padding-top: 2rem;
+    perspective: 1000px;
+}
+
+.p12-main-header {
+    position: relative;
+    /* Static/Relative positioning */
+    text-align: center;
+    width: 100%;
+    z-index: 5;
+    margin-bottom: 2rem;
+    flex-shrink: 0;
+}
+
+.p12-main-header h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.p12-subheading {
+    font-size: 1rem;
+    color: #aaa;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.p12-cards-wrapper {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    /* Take remaining height */
+    display: flex;
     align-items: center;
     justify-content: center;
-    perspective: 1000px;
 }
 
 .p12-card {
     position: absolute;
     width: 90%;
     max-width: 1000px;
-    height: 70vh;
+    height: 100%;
+    max-height: 60vh;
+    /* Limit height */
     background: #111;
     border: 1px solid #222;
     border-radius: 24px;
     overflow: hidden;
     box-shadow: -20px 20px 60px rgba(0, 0, 0, 0.8);
-    /* Shadow to left */
     will-change: transform, opacity;
+    /* top: 20% removed */
 }
 
 .p12-card-content {
@@ -274,6 +315,42 @@
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* View More Card */
+.p12-view-more-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+}
+
+.p12-view-more-content h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.p12-view-more-content p {
+    color: #aaa;
+    margin-bottom: 2rem;
+}
+
+.p12-view-more-btn {
+    background: transparent;
+    border: 1px solid #e63946;
+    color: #e63946;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.p12-view-more-btn:hover {
+    background: #e63946;
+    color: #fff;
+}
+
 /* Modal */
 .p12-modal-overlay {
     position: fixed;
@@ -282,7 +359,7 @@
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.95);
-    z-index: 2000;
+    z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -307,17 +384,25 @@
 .p12-close-btn {
     position: absolute;
     top: -50px;
-    right: 0;
-    background: transparent;
-    border: none;
+    right: -50px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #fff;
     cursor: pointer;
     transition: transform 0.3s ease;
+    z-index: 10000;
 }
 
 .p12-close-btn:hover {
     transform: rotate(90deg);
     color: #e63946;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* Responsive */
@@ -369,6 +454,15 @@
         gap: 2rem;
     }
 
+    .p12-main-header {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
     .p12-card {
         position: relative;
         width: 100%;
@@ -378,6 +472,7 @@
         opacity: 1 !important;
         filter: none !important;
         box-shadow: none;
+        top: 0;
     }
 
     .p12-card-content {
@@ -395,5 +490,10 @@
 
     .p12-title {
         font-size: 1.8rem;
+    }
+
+    .p12-close-btn {
+        top: -40px;
+        right: 0;
     }
 }
