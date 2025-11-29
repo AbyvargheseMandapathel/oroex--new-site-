@@ -1,56 +1,56 @@
 [
     {
         "id": 1,
-        "title": "Titan Series Turbine",
-        "category": "Power Generation",
-        "description": "High-efficiency gas turbine designed for continuous industrial operation.",
-        "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000",
+        "title": "Purge Panel",
+        "category": "Control Panels",
+        "description": "Protects spark-producing equipment by keeping flammable atmospheres out through controlled overpressure.",
+        "image": "https://spexaelectrical.com/media/products/Purge-768x503.png",
         "videoUrl": "https://video-previews.elements.envatousercontent.com/files/a2ef69cd-6038-4aa9-9430-580a563d7621/video_preview_h264.mp4",
         "price": "Contact for Quote"
     },
     {
         "id": 2,
-        "title": "SolarMax Panel Array",
-        "category": "Renewable Energy",
-        "description": "Next-gen photovoltaic panels with 25% higher efficiency rating.",
-        "image": "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80&w=1000",
+        "title": "PLC Panel",
+        "category": "Control Panels",
+        "description": "Protects spark-producing equipment by keeping flammable atmospheres out through controlled overpressure.",
+        "image": "https://spexaelectrical.com/media/products/ED1c_1_BBxrLJ9.jpg",
         "videoUrl": "https://video-previews.elements.envatousercontent.com/files/9b39ffd5-9b40-41da-a634-7937ada20c66/video_preview_h264.mp4",
         "price": "Contact for Quote"
     },
     {
         "id": 3,
-        "title": "DeepDrill X500",
-        "category": "Extraction",
-        "description": "Automated drilling rig capable of reaching extreme depths with precision.",
-        "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1000",
+        "title": "Switch Rack",
+        "category": "Control Panels",
+        "description": "Protects spark-producing equipment by keeping flammable atmospheres out through controlled overpressure.",
+        "image": "https://spexaelectrical.com/media/products/EFSC22-600x600_1.png",
         "videoUrl": "https://video-previews.elements.envatousercontent.com/files/d899859f-268d-4f81-9d10-3c1266a046bb/video_preview_h264.mp4",
         "price": "Contact for Quote"
     },
     {
         "id": 4,
-        "title": "SafetyGuard Pro Suit",
-        "category": "Safety Gear",
-        "description": "Advanced hazmat suit offering maximum protection in volatile environments.",
-        "image": "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=1000",
+        "title": "Ex d Starter",
+        "category": "Explosion Proof",
+        "description": "Protects spark-producing equipment by keeping flammable atmospheres out through controlled overpressure.",
+        "image": "https://spexaelectrical.com/media/products/LCSs_1_Om7FQHe.png",
         "videoUrl": "https://video-previews.elements.envatousercontent.com/files/6c953580-5758-4549-9f1d-c525f2429786/video_preview_h264.mp4",
-        "price": "$1,200"
+        "price": "Contact for Quote"
     },
     {
         "id": 5,
-        "title": "GridLock Battery System",
-        "category": "Energy Storage",
-        "description": "Scalable lithium-ion storage solution for grid stabilization.",
-        "image": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&q=80&w=1000",
+        "title": "Ex d Junction Box",
+        "category": "Explosion Proof",
+        "description": "Protects spark-producing equipment by keeping flammable atmospheres out through controlled overpressure.",
+        "image": "https://spexaelectrical.com/media/products/Heat-tracing-768x525_1.png",
         "videoUrl": "https://video-previews.elements.envatousercontent.com/files/a2ef69cd-6038-4aa9-9430-580a563d7621/video_preview_h264.mp4",
         "price": "Contact for Quote"
     },
     {
         "id": 6,
-        "title": "HydroFlow Pump Unit",
-        "category": "Fluid Management",
-        "description": "Heavy-duty industrial pump for high-pressure fluid transfer.",
+        "title": "Ex d Control Switches",
+        "category": "Explosion Proof",
+        "description": "Protects spark-producing equipment by keeping flammable atmospheres out through controlled overpressure.",
         "image": "https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&q=80&w=1000",
         "videoUrl": "https://video-previews.elements.envatousercontent.com/files/d899859f-268d-4f81-9d10-3c1266a046bb/video_preview_h264.mp4",
-        "price": "$5,500"
+        "price": "Contact for Quote"
     }
 ]
