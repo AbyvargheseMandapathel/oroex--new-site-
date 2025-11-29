@@ -1,0 +1,245 @@
+.services-nine-section {
+    background-color: #080808;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 0;
+    overflow: hidden;
+    color: #fff;
+}
+
+.s9-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    z-index: 20;
+}
+
+.s9-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.s9-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.s9-carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.s9-cards-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.s9-card {
+    position: absolute;
+    width: 350px;
+    height: 500px;
+    border-radius: 24px;
+    background: #1a1a1a;
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.s9-card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.s9-media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.s9-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+    transition: filter 0.5s ease;
+}
+
+.s9-card.active .s9-video {
+    filter: brightness(1);
+}
+
+.s9-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+.s9-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.s9-icon-badge {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.s9-card-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.s9-details {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.s9-details.visible {
+    max-height: 150px;
+    opacity: 1;
+    margin-top: 1rem;
+}
+
+.s9-desc {
+    font-size: 0.95rem;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.s9-action-btn {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.s9-action-btn:hover {
+    transform: scale(1.05);
+}
+
+.s9-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 30;
+    transition: background 0.3s ease;
+}
+
+.s9-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.s9-nav-btn.prev {
+    left: 2rem;
+}
+
+.s9-nav-btn.next {
+    right: 2rem;
+}
+
+.s9-indicators {
+    display: flex;
+    gap: 10px;
+    margin-top: 2rem;
+}
+
+.s9-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #444;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.s9-dot.active {
+    width: 24px;
+    border-radius: 4px;
+    background: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .s9-card {
+        width: 280px;
+        height: 400px;
+    }
+
+    .s9-nav-btn {
+        display: none;
+        /* Hide arrows on mobile, rely on swipe/tap */
+    }
+
+    .s9-title {
+        font-size: 2rem;
+    }
+}

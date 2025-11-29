@@ -1,0 +1,220 @@
+.services-five-section {
+    background-color: #0a0a0a;
+    color: #ffffff;
+    padding-bottom: 10vh;
+    position: relative;
+}
+
+.services-five-header {
+    padding: 8rem 5% 4rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.sf-main-title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, #fff, #666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sf-subtitle {
+    font-size: 1.2rem;
+    color: #888;
+    line-height: 1.6;
+}
+
+.services-five-container {
+    padding: 0 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    /* Fallback gap */
+}
+
+.sf-card-wrapper {
+    position: sticky;
+    top: 10vh;
+    /* Distance from top where cards stack */
+    height: 80vh;
+    /* Height of each card */
+    margin-bottom: 10vh;
+    /* Space between cards in flow */
+    /* Dynamic stacking context */
+    z-index: calc(1 + var(--index));
+}
+
+.sf-card {
+    width: 100%;
+    height: 100%;
+    background: #111;
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.sf-card-visual {
+    width: 60%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.sf-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.sf-card:hover .sf-video {
+    transform: scale(1.05);
+}
+
+.sf-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.sf-card-content {
+    width: 40%;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #161616;
+    position: relative;
+}
+
+.sf-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.sf-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #444;
+    font-family: monospace;
+}
+
+.sf-icon-box {
+    width: 60px;
+    height: 60px;
+    background: #222;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sf-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.sf-desc {
+    font-size: 1.1rem;
+    color: #999;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+
+.sf-tags {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: auto;
+}
+
+.sf-tags span {
+    font-size: 0.85rem;
+    color: #666;
+    border: 1px solid #333;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.sf-btn {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 1.2rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+}
+
+.sf-btn:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .sf-card {
+        flex-direction: column;
+    }
+
+    .sf-card-visual {
+        width: 100%;
+        height: 40%;
+    }
+
+    .sf-card-content {
+        width: 100%;
+        height: 60%;
+        padding: 2rem;
+    }
+
+    .sf-title {
+        font-size: 2rem;
+    }
+
+    .sf-card-wrapper {
+        top: 5vh;
+        /* Adjust sticky top for smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .sf-main-title {
+        font-size: 2.5rem;
+    }
+
+    .sf-card-wrapper {
+        height: auto;
+        min-height: 80vh;
+        position: relative;
+        /* Disable sticky on mobile if content is too tall */
+        top: 0;
+        margin-bottom: 4rem;
+    }
+
+    .sf-card {
+        height: auto;
+        min-height: 80vh;
+    }
+}

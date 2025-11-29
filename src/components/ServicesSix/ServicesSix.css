@@ -1,0 +1,233 @@
+.services-six-section {
+    position: relative;
+    min-height: 100vh;
+    background-color: #050505;
+    color: #ffffff;
+    overflow: hidden;
+    padding: 6rem 0;
+}
+
+/* Background Videos */
+.s6-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.s6-bg-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.s6-bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+}
+
+.s6-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    /* Dark overlay to make text pop */
+    z-index: 1;
+    backdrop-filter: blur(5px);
+    /* Subtle blur for depth */
+}
+
+/* Content */
+.s6-content-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.s6-header {
+    margin-bottom: 4rem;
+}
+
+.s6-main-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+.s6-subtitle {
+    font-size: 3rem;
+    font-weight: 700;
+    max-width: 600px;
+    line-height: 1.1;
+}
+
+/* List */
+.s6-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.s6-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.s6-item:hover {
+    padding-left: 2rem;
+    /* Indent on hover */
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), transparent);
+}
+
+.s6-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.s6-number {
+    font-family: monospace;
+    color: #555;
+    font-size: 1.2rem;
+    margin-right: 3rem;
+    width: 40px;
+}
+
+.s6-item-title {
+    font-size: 3.5rem;
+    font-weight: 400;
+    /* Thin elegant font */
+    flex-grow: 1;
+    transition: color 0.3s ease;
+}
+
+.s6-item.active .s6-item-title {
+    font-weight: 600;
+    color: #fff;
+}
+
+.s6-icon-indicator {
+    color: #fff;
+    opacity: 0.5;
+    transition: transform 0.3s ease;
+}
+
+.plus-icon.rotate {
+    transform: rotate(45deg);
+    /* Turn plus to x */
+}
+
+.s6-item-body {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+    padding-left: 5.5rem;
+    /* Align with title */
+}
+
+.s6-item.active .s6-item-body {
+    max-height: 200px;
+    /* Expand height */
+    opacity: 1;
+    margin-top: 1.5rem;
+}
+
+.s6-desc {
+    font-size: 1.1rem;
+    color: #ccc;
+    max-width: 500px;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.s6-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.s6-btn:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+/* Mobile Styles */
+@media (max-width: 1024px) {
+    .services-six-section {
+        background-color: #050505;
+        /* Solid bg on mobile */
+        padding: 4rem 0;
+    }
+
+    .s6-subtitle {
+        font-size: 2.5rem;
+    }
+
+    .s6-item {
+        padding: 2rem 0;
+    }
+
+    .s6-item:hover {
+        padding-left: 0;
+        /* No hover indent on mobile */
+        background: transparent;
+    }
+
+    .s6-item-title {
+        font-size: 2rem;
+    }
+
+    .s6-item-body {
+        padding-left: 0;
+        max-height: none;
+        /* Always show content or use JS toggle */
+        opacity: 1;
+        margin-top: 1.5rem;
+    }
+
+    .s6-mobile-video-wrapper {
+        width: 100%;
+        height: 250px;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .s6-mobile-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .s6-number {
+        display: none;
+        /* Hide numbers on mobile to save space */
+    }
+}

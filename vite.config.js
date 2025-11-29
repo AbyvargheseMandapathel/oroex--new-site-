@@ -11,7 +11,7 @@ export default defineConfig({
   server: {
     host: true, // required for ngrok / external access
     allowedHosts: [
-      "976e6fa772be.ngrok-free.app"  // your ngrok URL
+      "58fbfe2284bc.ngrok-free.app"  // your ngrok URL
     ]
   }
 })

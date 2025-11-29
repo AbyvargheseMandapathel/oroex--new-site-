@@ -1,0 +1,238 @@
+.services-four-section {
+    background-color: #000000;
+    color: #ffffff;
+    position: relative;
+    width: 100%;
+}
+
+.services-four-container {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+/* Left Column */
+.services-four-left {
+    width: 50%;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.visual-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.visual-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    visibility: hidden;
+}
+
+.visual-item.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.visual-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.visual-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8));
+}
+
+.visual-content {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    z-index: 2;
+}
+
+.visual-number {
+    font-size: 8rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.1);
+    line-height: 1;
+    margin-bottom: -2rem;
+    margin-left: -0.5rem;
+}
+
+.visual-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Right Column */
+.services-four-right {
+    width: 50%;
+    padding: 5rem 5%;
+    background-color: #000000;
+    z-index: 10;
+}
+
+.services-four-header {
+    margin-bottom: 5rem;
+    padding-top: 5rem;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.highlight {
+    color: #FFD700;
+    /* Gold/Amber Accent */
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: #a0a0a0;
+    max-width: 400px;
+}
+
+.services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+    /* Space between items */
+    padding-bottom: 20vh;
+}
+
+.service-four-item {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    opacity: 0.3;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateX(20px);
+}
+
+.service-four-item.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.service-item-content {
+    max-width: 500px;
+}
+
+.service-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 215, 0, 0.1);
+    /* Gold tint */
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFD700;
+    margin-bottom: 2rem;
+}
+
+.service-item-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.service-item-desc {
+    font-size: 1.1rem;
+    color: #cccccc;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2.5rem;
+}
+
+.service-features li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+    color: #e0e0e0;
+    font-size: 1rem;
+}
+
+.bullet {
+    width: 8px;
+    height: 8px;
+    background-color: #FFD700;
+    border-radius: 50%;
+}
+
+.service-btn {
+    background: transparent;
+    border: 1px solid #FFD700;
+    color: #FFD700;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    border-radius: 0;
+    /* Industrial sharp edges */
+}
+
+.service-btn:hover {
+    background: #FFD700;
+    color: #000000;
+}
+
+@media (max-width: 1024px) {
+    .services-four-container {
+        flex-direction: column;
+    }
+
+    .services-four-left {
+        width: 100%;
+        height: 50vh;
+        position: relative;
+        top: 0;
+    }
+
+    .services-four-right {
+        width: 100%;
+        padding: 3rem 5%;
+    }
+
+    .visual-title {
+        font-size: 2rem;
+    }
+
+    .visual-number {
+        font-size: 4rem;
+    }
+}

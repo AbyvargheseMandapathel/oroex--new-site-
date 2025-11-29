@@ -25,7 +25,13 @@ const iconMap = {
     SolarSolutions: Sun,
 };
 
-const ServicesThree = () => {
+const ServicesThree = ({
+    backgroundColor = "#050505",
+    accentColor = "#e63946",
+    textColor = "#ffffff",
+    subTextColor = "#a0a0a0",
+    cardBgColor = "#1a1a1a"
+}) => {
     const sectionRef = useRef(null);
     const triggerRef = useRef(null);
 
@@ -58,7 +64,17 @@ const ServicesThree = () => {
     }, []);
 
     return (
-        <div className="services-three-wrapper" ref={triggerRef}>
+        <div
+            className="services-three-wrapper"
+            ref={triggerRef}
+            style={{
+                "--bg-color": backgroundColor,
+                "--accent-color": accentColor,
+                "--text-color": textColor,
+                "--sub-text-color": subTextColor,
+                "--card-bg-color": cardBgColor
+            }}
+        >
             <div className="services-three-container" ref={sectionRef}>
 
                 {/* Intro Card */}

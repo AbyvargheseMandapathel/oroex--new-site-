@@ -1,0 +1,339 @@
+.products-five-section {
+    height: 100vh;
+    width: 100%;
+    background-color: #000;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.p5-bg-text {
+    position: absolute;
+    bottom: -5%;
+    left: 0;
+    font-size: 25vw;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
+    line-height: 1;
+}
+
+.p5-header-fixed {
+    position: absolute;
+    top: 3rem;
+    left: 4rem;
+    z-index: 10;
+}
+
+.p5-header-fixed h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.p5-accent {
+    color: #e63946;
+    /* Red Accent */
+}
+
+.p5-header-fixed p {
+    color: #666;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.p5-container {
+    display: flex;
+    gap: 6rem;
+    padding-left: 4rem;
+    padding-right: 20vw;
+    /* Space at end */
+    height: 65vh;
+    align-items: center;
+    will-change: transform;
+    z-index: 5;
+}
+
+.p5-card {
+    flex-shrink: 0;
+    width: 400px;
+    height: 100%;
+    position: relative;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+}
+
+.p5-card-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.p5-media {
+    width: 100%;
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    /* Sharp industrial look */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+.p5-card:hover .p5-media {
+    border-color: #e63946;
+}
+
+.p5-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+    filter: grayscale(100%);
+}
+
+.p5-card:hover .p5-img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+.p5-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.p5-card:hover .p5-overlay {
+    opacity: 1;
+}
+
+.p5-play-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #e63946;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 20px rgba(230, 57, 70, 0.5);
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.p5-card:hover .p5-play-icon {
+    transform: scale(1);
+}
+
+.p5-view-text {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.p5-info {
+    padding: 0 0.5rem;
+}
+
+.p5-cat {
+    color: #e63946;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.p5-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+}
+
+.p5-price {
+    color: #888;
+    font-size: 1rem;
+}
+
+/* Expanded State (Video Player) */
+.p5-card.expanded {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    transform: none !important;
+    /* Override scroll transform */
+    cursor: default;
+    background: #000;
+}
+
+.p5-card.expanded .p5-card-inner {
+    gap: 0;
+}
+
+.p5-card.expanded .p5-media {
+    border-radius: 0;
+    border: none;
+}
+
+.p5-card.expanded .p5-info {
+    display: none;
+    /* Hide standard info in expanded mode */
+}
+
+.p5-video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease 0.3s;
+    /* Delay for expansion */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p5-video-wrapper.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.p5-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    /* Dim video slightly for text overlay */
+}
+
+.p5-close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 20;
+}
+
+.p5-close-btn:hover {
+    background: #e63946;
+    border-color: #e63946;
+    transform: rotate(90deg);
+}
+
+.p5-video-info {
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    max-width: 600px;
+    z-index: 10;
+}
+
+.p5-video-info h3 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.p5-video-info p {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.p5-cta-btn {
+    background: #e63946;
+    color: #fff;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.p5-cta-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .products-five-section {
+        height: auto;
+        display: block;
+        padding: 6rem 0;
+        overflow: visible;
+    }
+
+    .p5-header-fixed {
+        position: relative;
+        top: 0;
+        left: 0;
+        padding: 0 5%;
+        margin-bottom: 3rem;
+    }
+
+    .p5-container {
+        flex-direction: column;
+        height: auto;
+        padding: 0 5%;
+        gap: 4rem;
+        transform: none !important;
+        /* Disable GSAP transform */
+    }
+
+    .p5-card {
+        width: 100%;
+        height: 500px;
+        transform: none !important;
+        /* Disable skew */
+    }
+
+    .p5-video-info h3 {
+        font-size: 2.5rem;
+    }
+}

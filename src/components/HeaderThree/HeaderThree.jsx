@@ -5,6 +5,7 @@ import logo from '../../assets/logo.svg';
 
 const HeaderThree = () => {
     const [scale, setScale] = useState(1);
+    const [opacity, setOpacity] = useState(1);
     const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
     const wrapperRef = useRef(null);
     const videoRef = useRef(null);
@@ -30,6 +31,14 @@ const HeaderThree = () => {
             // Scale from 1 to ~120 to ensure it fills the screen
             const newScale = 1 + Math.pow(progress, 2.5) * 120;
             setScale(newScale);
+
+            // Fade out logic: Start fading at 60% progress, fully transparent by 90%
+            let newOpacity = 1;
+            if (progress > 0.6) {
+                newOpacity = 1 - (progress - 0.6) / 0.3;
+                if (newOpacity < 0) newOpacity = 0;
+            }
+            setOpacity(newOpacity);
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -84,7 +93,10 @@ const HeaderThree = () => {
 
                 <div
                     className="header-three-content"
-                    style={{ transform: `scale(${scale})` }}
+                    style={{
+                        transform: `scale(${scale})`,
+                        opacity: opacity
+                    }}
                 >
                     <img src={logo} alt="OroEx Logo" className="header-three-logo" />
                 </div>
