@@ -101,8 +101,8 @@ const ProductsEleven = () => {
                 pin: true,
                 scrub: 1,
                 onUpdate: self => {
-                    // Reduced speed multiplier from 2 to 1.2 for smoother/slower control
-                    loop.time(self.progress * loop.duration() * 1.2);
+                    // Reduced speed multiplier to 0.5 for very smooth/slow control
+                    loop.time(self.progress * loop.duration() * 0.5);
                 }
             });
 

@@ -23,6 +23,7 @@ import ProductsEight from './components/ProductsEight/ProductsEight'
 import ProductsNine from './components/ProductsNine/ProductsNine'
 import ProductsTen from './components/ProductsTen/ProductsTen'
 import ProductsEleven from './components/ProductsEleven/ProductsEleven'
+import ProductsTwelve from './components/ProductsTwelve/ProductsTwelve'
 import exploreBg from './assets/mini.png'
 
 function App() {
@@ -68,7 +69,8 @@ function App() {
       {/* <ProductsEight /> */}
       {/* <ProductsNine /> */}
       {/* <ProductsTen /> */}
-      <ProductsEleven />
+      {/* <ProductsEleven /> */}
+      <ProductsTwelve />
       {/* <div style={{ height: '200vh', background: '#111' }}>
         {/* Spacer to enable scrolling */}
       {/* <h2 style={{ color: 'white', textAlign: 'center', paddingTop: '50px' }}>Scroll down to see the effect</h2>
