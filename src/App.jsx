@@ -26,6 +26,8 @@ import ProductsEleven from './components/ProductsEleven/ProductsEleven'
 import ProductsTwelve from './components/ProductsTwelve/ProductsTwelve'
 import Projects from './components/Projects/Projects'
 import ProjectsTwo from './components/ProjectsTwo/ProjectsTwo'
+import ContactUs from './components/ContactUs/ContactUs'
+import Footer from './components/Footer/Footer'
 import exploreBg from './assets/mini.png'
 
 function App() {
@@ -75,6 +77,8 @@ function App() {
       <ProductsTwelve />
       {/* <Projects /> */}
       <ProjectsTwo />
+      <ContactUs />
+      <Footer />
       {/* <div style={{ height: '200vh', background: '#111' }}>
         {/* Spacer to enable scrolling */}
       {/* <h2 style={{ color: 'white', textAlign: 'center', paddingTop: '50px' }}>Scroll down to see the effect</h2>
