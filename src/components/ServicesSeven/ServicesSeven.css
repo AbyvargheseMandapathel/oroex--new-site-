@@ -94,6 +94,7 @@
     height: 100%;
     width: 100%;
     color: #fff;
+    font-size: 1.7rem;
 }
 
 /* Collapsed Content (Visible when inactive) */
@@ -228,7 +229,7 @@
     .s7-vertical-text {
         writing-mode: horizontal-tb;
         transform: none;
-        font-size: 1.1rem;
+        font-size: 1.9rem;
     }
 
     .s7-number {
