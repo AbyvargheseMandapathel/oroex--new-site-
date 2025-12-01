@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.css';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import logo from '../../assets/logo.svg';
 
 const Footer = () => {
     return (
@@ -8,7 +9,7 @@ const Footer = () => {
             <div className="footer-container">
                 <div className="footer-top">
                     <div className="footer-col footer-brand">
-                        <h2 className="footer-logo">OROEX</h2>
+                        <img src={logo} alt="OROEX" className="footer-logo-img" />
                         <p className="footer-desc">
                             Delivering excellence in industrial solutions. We build the future with precision and durability.
                         </p>
@@ -54,7 +55,7 @@ const Footer = () => {
 
                 <div className="footer-bottom">
                     <div className="footer-copyright">
-                        &copy; 2025 OROEX. All rights reserved.
+                        &copy; 2025 OroEx. All rights reserved.
                     </div>
                     <div className="footer-socials">
                         <a href="#" className="social-icon"><Facebook size={20} /></a>

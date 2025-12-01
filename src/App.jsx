@@ -23,7 +23,7 @@ import ProductsEight from './components/ProductsEight/ProductsEight'
 import ProductsNine from './components/ProductsNine/ProductsNine'
 import ProductsTen from './components/ProductsTen/ProductsTen'
 import ProductsEleven from './components/ProductsEleven/ProductsEleven'
-import ProductsTwelve from './components/ProductsTwelve/ProductsTwelve'
+import ProductsThirteen from './components/ProductsThirteen/ProductsThirteen'
 import Projects from './components/Projects/Projects'
 import ProjectsTwo from './components/ProjectsTwo/ProjectsTwo'
 import ContactUs from './components/ContactUs/ContactUs'
@@ -74,7 +74,7 @@ function App() {
       {/* <ProductsNine /> */}
       {/* <ProductsTen /> */}
       {/* <ProductsEleven /> */}
-      <ProductsTwelve />
+      <ProductsThirteen />
       {/* <Projects /> */}
       <ProjectsTwo />
       <ContactUs />
