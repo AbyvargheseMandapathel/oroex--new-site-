@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import './ProductsThirteen.css';
 import productsData from '../../data/products.json';
 import gsap from 'gsap';
-import { Play, X, ArrowRight, Plus } from 'lucide-react';
+import { Play, ArrowRight, Plus } from 'lucide-react';
+import InlineVideoPlayer from './InlineVideoPlayer';
 
 const ProductsThirteen = () => {
     const sectionRef = useRef(null);
@@ -10,8 +11,6 @@ const ProductsThirteen = () => {
     const indicatorsRef = useRef([]);
     const [activeIndex, setActiveIndex] = useState(0);
     const [activeVideo, setActiveVideo] = useState(null);
-    const videoRefs = useRef({});
-    const modalRef = useRef(null);
 
     // Limit to first 5 for the main slider
     const displayLimit = 5;
@@ -25,6 +24,9 @@ const ProductsThirteen = () => {
         const indicators = indicatorsRef.current;
 
         if (!cards.length) return;
+
+        // Reset active video when slide changes
+        setActiveVideo(null);
 
         // Update Cards
         cards.forEach((card, index) => {
@@ -87,39 +89,13 @@ const ProductsThirteen = () => {
         gsap.set(cards[0], { xPercent: 0 });
     }, []);
 
-    // Handle Escape key for modal
-    useEffect(() => {
-        const handleEsc = (e) => {
-            if (e.key === 'Escape') {
-                handleClose();
-            }
-        };
-        if (activeVideo) {
-            window.addEventListener('keydown', handleEsc);
-        }
-        return () => window.removeEventListener('keydown', handleEsc);
-    }, [activeVideo]);
-
-    const handlePlay = (id) => {
+    const handlePlay = (id, e) => {
+        e.stopPropagation(); // Prevent triggering other clicks if any
         setActiveVideo(id);
-        setTimeout(() => {
-            if (videoRefs.current[id]) {
-                videoRefs.current[id].play();
-            }
-        }, 100);
     };
 
-    const handleClose = () => {
-        if (activeVideo && videoRefs.current[activeVideo]) {
-            videoRefs.current[activeVideo].pause();
-        }
+    const handleCloseVideo = () => {
         setActiveVideo(null);
-    };
-
-    const handleOverlayClick = (e) => {
-        if (modalRef.current && !modalRef.current.contains(e.target)) {
-            handleClose();
-        }
     };
 
     return (
@@ -196,14 +172,24 @@ const ProductsThirteen = () => {
                                         </div>
                                     </div>
 
-                                    <div className="p13-visual" onClick={() => handlePlay(product.id)}>
-                                        <img src={product.image} alt={product.title} className="p13-img" />
-                                        <div className="p13-overlay">
-                                            <div className="p13-play-circle">
-                                                <Play size={28} fill="currentColor" />
-                                            </div>
-                                            <span>WATCH VIDEO</span>
-                                        </div>
+                                    <div className="p13-visual">
+                                        {activeVideo === product.id ? (
+                                            <InlineVideoPlayer
+                                                videoUrl={product.videoUrl}
+                                                poster={product.image}
+                                                onClose={handleCloseVideo}
+                                            />
+                                        ) : (
+                                            <>
+                                                <img src={product.image} alt={product.title} className="p13-img" />
+                                                <div className="p13-overlay" onClick={(e) => handlePlay(product.id, e)}>
+                                                    <div className="p13-play-circle">
+                                                        <Play size={28} fill="currentColor" />
+                                                    </div>
+                                                    <span>WATCH VIDEO</span>
+                                                </div>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -225,23 +211,6 @@ const ProductsThirteen = () => {
                     </div>
                 </div>
             </div>
-
-            {/* Video Modal */}
-            {activeVideo && (
-                <div className="p13-modal-overlay" onClick={handleOverlayClick}>
-                    <div className="p13-modal-content" ref={modalRef}>
-                        <button className="p13-close-btn" onClick={handleClose}>
-                            <X size={32} />
-                        </button>
-                        <video
-                            ref={el => videoRefs.current[activeVideo] = el}
-                            src={productsData.find(p => p.id === activeVideo)?.videoUrl}
-                            controls
-                            className="p13-modal-video"
-                        />
-                    </div>
-                </div>
-            )}
         </section>
     );
 };

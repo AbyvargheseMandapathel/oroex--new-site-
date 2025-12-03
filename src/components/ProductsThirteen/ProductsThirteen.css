@@ -501,3 +501,42 @@
         right: 0;
     }
 }
+/* Inline Video Player Styles */
+.p13-inline-video-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p13-inline-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.p13-inline-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s ease;
+}
+
+.p13-inline-close-btn:hover {
+    background: rgba(230, 57, 70, 0.9);
+}
+
