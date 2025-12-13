@@ -32,10 +32,10 @@ const HeaderThree = () => {
             const newScale = 1 + Math.pow(progress, 2.5) * 120;
             setScale(newScale);
 
-            // Fade out logic: Start fading at 60% progress, fully transparent by 90%
+            // Fade out logic: Start fading at 60% progress, fully transparent by 100%
             let newOpacity = 1;
             if (progress > 0.6) {
-                newOpacity = 1 - (progress - 0.6) / 0.3;
+                newOpacity = 1 - (progress - 0.6) / 0.4;
                 if (newOpacity < 0) newOpacity = 0;
             }
             setOpacity(newOpacity);
