@@ -18,6 +18,36 @@ const ProjectsTwo = () => {
         setActiveProject(projectsData[prevIndex]);
     };
 
+    // Touch state for swipe definition
+    const [touchStart, setTouchStart] = useState(null);
+    const [touchEnd, setTouchEnd] = useState(null);
+
+    // Minimum swipe distance (in px) 
+    const minSwipeDistance = 50;
+
+    const onTouchStart = (e) => {
+        setTouchEnd(null); // Reset touch end
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const onTouchMove = (e) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    const onTouchEnd = () => {
+        if (!touchStart || !touchEnd) return;
+
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+
+        if (isLeftSwipe) {
+            handleNext();
+        } else if (isRightSwipe) {
+            handlePrev();
+        }
+    };
+
     return (
         <section className="projects-two-section">
             <div className="p2-bg-grid"></div>
@@ -32,8 +62,13 @@ const ProjectsTwo = () => {
                 </div>
 
                 <div className="projects-two-content">
-                    {/* Left: Active Project Display */}
-                    <div className="p2-display-area">
+                    {/* Left: Active Project Display - Added Swipe Handlers */}
+                    <div
+                        className="p2-display-area"
+                        onTouchStart={onTouchStart}
+                        onTouchMove={onTouchMove}
+                        onTouchEnd={onTouchEnd}
+                    >
                         <div className="p2-image-card">
                             <img
                                 src={activeProject.image}
