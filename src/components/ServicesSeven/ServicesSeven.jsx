@@ -21,8 +21,11 @@ const iconMap = {
     SolarSolutions: Sun,
 };
 
+import { useNavigate } from 'react-router-dom';
+
 const ServicesSeven = () => {
     const [activeIndex, setActiveIndex] = useState(0);
+    const navigate = useNavigate();
 
     return (
         <section className="services-seven-section">
@@ -72,7 +75,13 @@ const ServicesSeven = () => {
                                         <h3 className="s7-item-title">{service.title}</h3>
                                     </div>
                                     <p className="s7-desc">{service.description}</p>
-                                    <button className="s7-btn">
+                                    <button
+                                        className="s7-btn"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            navigate(`/services/${service.id}`);
+                                        }}
+                                    >
                                         <span>View Service</span>
                                         <ArrowRight size={16} />
                                     </button>

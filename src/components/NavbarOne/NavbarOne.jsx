@@ -4,6 +4,8 @@ import menuItems from '../../data/navbarOneMenu.json';
 import logo from '../../assets/logo.svg';
 import { X, ChevronDown } from 'lucide-react';
 
+import { Link } from 'react-router-dom';
+
 const NavbarOne = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -21,16 +23,16 @@ const NavbarOne = () => {
         <div className="navbar-one-wrapper">
             <nav className="navbar-one">
                 <div className="navbar-one-logo">
-                    <a href="/">
+                    <Link to="/">
                         <img src={logo} alt="OroEx" />
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="navbar-one-links">
                     {menuItems.map((item, index) => (
-                        <a key={index} href={item.link} className="navbar-one-link">
+                        <Link key={index} to={item.link} className="navbar-one-link">
                             {item.label}
-                        </a>
+                        </Link>
                     ))}
                 </div>
 
@@ -43,9 +45,9 @@ const NavbarOne = () => {
                 </div>
 
                 <div className="navbar-one-action">
-                    <a href="/contact" className="contact-btn">
+                    <Link to="/contact" className="contact-btn">
                         CONTACT US
-                    </a>
+                    </Link>
                 </div>
             </nav>
 
@@ -62,10 +64,10 @@ const NavbarOne = () => {
                 <div className="sidebar-content">
                     <div className="sidebar-nav">
                         {menuItems.map((item, index) => (
-                            <a key={index} href={item.link} className="sidebar-link">
+                            <Link key={index} to={item.link} className="sidebar-link" onClick={() => setIsMenuOpen(false)}>
                                 {item.label}
                                 {item.hasSubmenu && <ChevronDown size={16} />}
-                            </a>
+                            </Link>
                         ))}
                     </div>
 

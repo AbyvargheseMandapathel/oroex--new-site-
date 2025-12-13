@@ -3,7 +3,10 @@ import './ProjectsTwo.css';
 import projectsData from '../../data/projects.json';
 import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
+import { useNavigate } from 'react-router-dom';
+
 const ProjectsTwo = () => {
+    const navigate = useNavigate();
     const [activeProject, setActiveProject] = useState(projectsData[0]);
 
     const handleNext = () => {
@@ -86,9 +89,12 @@ const ProjectsTwo = () => {
                         <div className="p2-details-panel">
                             <div className="p2-details-text-action">
                                 <p className="p2-desc">{activeProject.description}</p>
-                                <a href={activeProject.link} className="p2-link-btn">
+                                <button
+                                    className="p2-link-btn"
+                                    onClick={() => navigate(`/projects/${activeProject.id}`)}
+                                >
                                     VIEW CASE STUDY <ArrowUpRight size={18} />
-                                </a>
+                                </button>
                             </div>
 
                             {/* Mobile Navigation Controls */}
@@ -104,7 +110,10 @@ const ProjectsTwo = () => {
                                 </div>
                             </div>
 
-                            <button className="p2-view-all-btn-mobile">
+                            <button
+                                className="p2-view-all-btn-mobile"
+                                onClick={() => navigate('/projects')}
+                            >
                                 VIEW ALL PROJECTS
                             </button>
                         </div>
@@ -130,7 +139,10 @@ const ProjectsTwo = () => {
                             ))}
                         </div>
                         <div className="p2-view-all-wrapper">
-                            <button className="p2-view-all-btn">
+                            <button
+                                className="p2-view-all-btn"
+                                onClick={() => navigate('/projects')}
+                            >
                                 VIEW ALL PROJECTS
                             </button>
                         </div>
