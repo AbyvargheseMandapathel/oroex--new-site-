@@ -29,6 +29,7 @@ import ProjectsTwo from './components/ProjectsTwo/ProjectsTwo'
 import ContactUs from './components/ContactUs/ContactUs'
 import Footer from './components/Footer/Footer'
 import exploreBg from './assets/mini.png'
+import ProductsFourteen from './components/ProductsFourteen/ProductsFourteen'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -75,6 +76,7 @@ function App() {
       {/* <ProductsTen /> */}
       {/* <ProductsEleven /> */}
       <ProductsThirteen />
+      {/* <ProductsFourteen /> */}
       {/* <Projects /> */}
       <ProjectsTwo />
       <ContactUs />

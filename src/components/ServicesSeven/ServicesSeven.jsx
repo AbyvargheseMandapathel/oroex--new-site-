@@ -74,7 +74,7 @@ const ServicesSeven = () => {
                                     <p className="s7-desc">{service.description}</p>
                                     <button className="s7-btn">
                                         <span>View Service</span>
-                                        <ArrowRight size={18} />
+                                        <ArrowRight size={16} />
                                     </button>
                                 </div>
                             </div>
