@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "title": "ISO 9001:2008 Certification",
+        "type": "Certificate",
+        "description": "Quality Management System Certification",
+        "size": "1.2 MB",
+        "link": "#",
+        "image": "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=300"
+    },
+    {
+        "id": 2,
+        "title": "OroEx Company Profile",
+        "type": "Profile",
+        "description": "Comprehensive overview of our services and capabilities",
+        "size": "5.4 MB",
+        "link": "#",
+        "image": "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=300"
+    },
+    {
+        "id": 3,
+        "title": "Explosion Proof Product Brochure",
+        "type": "Brochure",
+        "description": "Detailed catalog of our explosion-proof product line",
+        "size": "8.1 MB",
+        "link": "#",
+        "image": "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?auto=format&fit=crop&q=80&w=300"
+    },
+    {
+        "id": 4,
+        "title": "Control Panel Solutions",
+        "type": "Brochure",
+        "description": "Technical specifications for custom control panels",
+        "size": "3.5 MB",
+        "link": "#",
+        "image": "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80&w=300"
+    },
+    {
+        "id": 5,
+        "title": "HSE Policy Document",
+        "type": "Policy",
+        "description": "Health, Safety, and Environment usage policy",
+        "size": "0.8 MB",
+        "link": "#",
+        "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=300"
+    }
+]

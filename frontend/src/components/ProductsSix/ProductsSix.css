@@ -1,0 +1,364 @@
+.products-six-container {
+    background-color: #050505;
+    color: #fff;
+    width: 100%;
+}
+
+.p6-main-header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000 70%);
+}
+
+.p6-main-header h2 {
+    font-size: 5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    z-index: 2;
+}
+
+.p6-accent {
+    color: #e63946;
+    /* Red */
+}
+
+.p6-scroll-hint {
+    position: absolute;
+    bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0.7;
+}
+
+.p6-mouse {
+    width: 30px;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 15px;
+    position: relative;
+}
+
+.p6-mouse::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    background: #fff;
+    border-radius: 2px;
+    animation: scroll 1.5s infinite;
+}
+
+@keyframes scroll {
+    0% {
+        top: 10px;
+        opacity: 1;
+    }
+
+    100% {
+        top: 30px;
+        opacity: 0;
+    }
+}
+
+/* Sections */
+.p6-section {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 4rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.p6-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 15vw;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.02);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.p6-inner {
+    width: 90%;
+    max-width: 1400px;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    z-index: 1;
+}
+
+/* Content */
+.p6-content {
+    flex: 1;
+    padding: 2rem;
+}
+
+.p6-number {
+    font-size: 4rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.1);
+    margin-bottom: -1rem;
+    margin-left: -5px;
+}
+
+.p6-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.p6-tags {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.p6-tags span {
+    background: rgba(230, 57, 70, 0.1);
+    color: #e63946;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.p6-desc {
+    font-size: 1.1rem;
+    color: #aaa;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 500px;
+}
+
+.p6-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.p6-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+.p6-icon {
+    color: #e63946;
+}
+
+.p6-price-row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.p6-price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.p6-btn {
+    background: #e63946;
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.p6-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* Visual */
+.p6-visual {
+    flex: 1;
+    height: 600px;
+    position: relative;
+}
+
+.p6-image-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+.p6-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.p6-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.p6-image-wrapper:hover .p6-overlay {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.p6-play-btn {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.p6-play-btn:hover {
+    background: #e63946;
+    border-color: #e63946;
+    transform: scale(1.05);
+}
+
+.p6-play-btn span {
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+/* Modal */
+.p6-video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.p6-modal-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.p6-modal-close:hover {
+    transform: rotate(90deg);
+    color: #e63946;
+}
+
+.p6-video-container {
+    width: 80%;
+    max-width: 1200px;
+    aspect-ratio: 16/9;
+}
+
+.p6-modal-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid #333;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .p6-inner {
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+
+    .p6-content {
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .p6-tags {
+        justify-content: center;
+    }
+
+    .p6-desc {
+        margin: 0 auto 2rem;
+    }
+
+    .p6-features {
+        max-width: 400px;
+        margin: 0 auto 2rem;
+    }
+
+    .p6-price-row {
+        justify-content: center;
+    }
+
+    .p6-visual {
+        width: 100%;
+        height: 400px;
+    }
+
+    .p6-main-header h2 {
+        font-size: 3rem;
+    }
+}

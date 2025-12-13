@@ -1,0 +1,30 @@
+[
+    {
+        "label": "SERVICES",
+        "link": "/services"
+    },
+    {
+        "label": "PRODUCTS",
+        "link": "/products"
+    },
+    {
+        "label": "ABOUT US",
+        "link": "/about"
+    },
+    {
+        "label": "PROJECTS",
+        "link": "/projects"
+    },
+    {
+        "label": "DOWNLOADS",
+        "link": "/downloads"
+    },
+    {
+        "label": "FAQS",
+        "link": "/faqs"
+    },
+    {
+        "label": "CAREERS",
+        "link": "/careers"
+    }
+]

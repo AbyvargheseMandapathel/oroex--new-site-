@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "question": "What standards do your explosion-proof products meet?",
+        "answer": "Our products are certified to meet international standards such as ATEX, IECEx, and NEC, ensuring safety in hazardous environments."
+    },
+    {
+        "id": 2,
+        "question": "Can you provide custom control panel solutions?",
+        "answer": "Yes, we specialize in designing and manufacturing custom explosion-proof control panels tailored to your specific project requirements."
+    },
+    {
+        "id": 3,
+        "question": "What industries do you serve?",
+        "answer": "We serve a wide range of industries including Oil & Gas, Petrochemical, Pharmaceutical, Marine, and Manufacturing."
+    },
+    {
+        "id": 4,
+        "question": "Do you offer installation and maintenance services?",
+        "answer": "We provide comprehensive support including installation guidance and maintenance services to ensure the longevity and safety of our equipment."
+    },
+    {
+        "id": 5,
+        "question": "How can I request a quote?",
+        "answer": "You can request a quote by navigating to the specific product page and clicking the 'Request Quote' button, or by contacting our sales team directly through the Contact Us page."
+    },
+    {
+        "id": 6,
+        "question": "What is the lead time for orders?",
+        "answer": "Lead times vary depending on the product and customization requirements. Standard items are often in stock, while custom solutions may take 4-8 weeks."
+    }
+]

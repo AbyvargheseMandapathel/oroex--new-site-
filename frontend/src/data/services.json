@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "icon": "Installation",
+        "title": "Installation",
+        "description": "Expert supply, installation, and commissioning of industrial equipment.",
+        "videoUrl": "https://video-previews.elements.envatousercontent.com/h264-video-previews/4802f977-2bbe-4246-9b98-c3866c51a33a/9752479.mp4"
+    },
+    {
+        "id": 2,
+        "icon": "Maintenance",
+        "title": "Maintenance",
+        "description": "Routine maintenance to maximize uptime and ensure smooth operation.",
+        "videoUrl": "https://videos.pexels.com/video-files/3141207/3141207-uhd_2560_1440_25fps.mp4"
+    },
+    {
+        "id": 3,
+        "icon": "OnshoreOffshore",
+        "title": "Onshore & Offshore",
+        "description": "Tailored electrical solutions for industrial sectors.",
+        "videoUrl": "https://video-previews.elements.envatousercontent.com/files/9b39ffd5-9b40-41da-a634-7937ada20c66/video_preview_h264.mp4"
+    },
+    {
+        "id": 4,
+        "icon": "OffshoreSolutions",
+        "title": "Offshore Solutions",
+        "description": "Solutions for offshore oil & gas industries.",
+        "videoUrl": "https://video-previews.elements.envatousercontent.com/cec0056e-34f0-42f4-9115-b9c42c914bb7/watermarked_preview/watermarked_preview.mp4"
+    },
+    {
+        "id": 5,
+        "icon": "Assembly",
+        "title": "Assembly",
+        "description": "Custom-built electric assemblies, certified and tested.",
+        "videoUrl": "https://videos.pexels.com/video-files/3130284/3130284-uhd_2560_1440_30fps.mp4"
+    },
+    {
+        "id": 6,
+        "icon": "SolarSolutions",
+        "title": "Solar Solutions",
+        "description": "Cost-saving solar power systems for industrial sites.",
+        "videoUrl": "https://video-previews.elements.envatousercontent.com/files/9b39ffd5-9b40-41da-a634-7937ada20c66/video_preview_h264.mp4"
+    }
+]

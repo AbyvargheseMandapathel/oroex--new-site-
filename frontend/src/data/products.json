@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "title": "Increased Safe",
+        "category": "Junction Boxes",
+        "subcategory": "Standard",
+        "description": "Increased Safety (Ex e) is an explosion-protection method used in hazardous areas to prevent ignition from electrical equipment",
+        "image": "products/product1.png",
+        "videoUrl": "products/ORO.mp4",
+        "price": "Contact for Quote"
+    },
+    {
+        "id": 2,
+        "title": "PLC Panel",
+        "category": "Control Panels",
+        "subcategory": "PLC Systems",
+        "description": "Protects spark-producing equipment by keeping flammable atmospheres out through controlled overpressure.",
+        "image": "https://spexaelectrical.com/media/products/ED1c_1_BBxrLJ9.jpg",
+        "videoUrl": "https://video-previews.elements.envatousercontent.com/files/9b39ffd5-9b40-41da-a634-7937ada20c66/video_preview_h264.mp4",
+        "price": "Contact for Quote"
+    },
+    {
+        "id": 3,
+        "title": "Switch Rack",
+        "category": "Control Panels",
+        "subcategory": "Racks",
+        "description": "Protects spark-producing equipment by keeping flammable atmospheres out through controlled overpressure.",
+        "image": "https://spexaelectrical.com/media/products/EFSC22-600x600_1.png",
+        "videoUrl": "https://video-previews.elements.envatousercontent.com/files/d899859f-268d-4f81-9d10-3c1266a046bb/video_preview_h264.mp4",
+        "price": "Contact for Quote"
+    },
+    {
+        "id": 4,
+        "title": "Ex d Starter",
+        "category": "Explosion Proof",
+        "subcategory": "Starters",
+        "description": "Protects spark-producing equipment by keeping flammable atmospheres out through controlled overpressure.",
+        "image": "https://spexaelectrical.com/media/products/LCSs_1_Om7FQHe.png",
+        "videoUrl": "https://video-previews.elements.envatousercontent.com/files/6c953580-5758-4549-9f1d-c525f2429786/video_preview_h264.mp4",
+        "price": "Contact for Quote"
+    },
+    {
+        "id": 5,
+        "title": "Ex d Junction Box",
+        "category": "Explosion Proof",
+        "subcategory": "Junction Boxes",
+        "description": "Protects spark-producing equipment by keeping flammable atmospheres out through controlled overpressure.",
+        "image": "https://spexaelectrical.com/media/products/Heat-tracing-768x525_1.png",
+        "videoUrl": "https://video-previews.elements.envatousercontent.com/files/a2ef69cd-6038-4aa9-9430-580a563d7621/video_preview_h264.mp4",
+        "price": "Contact for Quote"
+    },
+    {
+        "id": 6,
+        "title": "Ex d Control Switches",
+        "category": "Explosion Proof",
+        "subcategory": "Switches",
+        "description": "Protects spark-producing equipment by keeping flammable atmospheres out through controlled overpressure.",
+        "image": "https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&q=80&w=1000",
+        "videoUrl": "https://video-previews.elements.envatousercontent.com/files/d899859f-268d-4f81-9d10-3c1266a046bb/video_preview_h264.mp4",
+        "price": "Contact for Quote"
+    }
+]

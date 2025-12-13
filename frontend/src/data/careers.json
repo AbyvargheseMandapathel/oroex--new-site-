@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "title": "Senior Electrical Engineer",
+        "location": "Dubai, UAE",
+        "type": "Full-time",
+        "description": "We are seeking an experienced Electrical Engineer with a background in explosion-proof systems. You will lead the design and implementation of safety-critical control panels.",
+        "requirements": [
+            "Bachelor's degree in Electrical Engineering",
+            "5+ years of experience in hazardous area equipment",
+            "Proficiency in AutoCAD and EPLAN"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Sales Manager - Oil & Gas",
+        "location": "Abu Dhabi, UAE",
+        "type": "Full-time",
+        "description": "Join our dynamic sales team to expand our footprint in the Oil & Gas sector. You will be responsible for key account management and business development.",
+        "requirements": [
+            "Proven track record in B2B sales",
+            "Strong network in the Oil & Gas industry",
+            "Excellent communication and negotiation skills"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Technical Support Specialist",
+        "location": "Dubai, UAE",
+        "type": "Full-time",
+        "description": "Provide first-line technical support to our customers. Ideally suited for someone with a hands-on approach and good problem-solving skills.",
+        "requirements": [
+            "Diploma or Degree in a technical field",
+            "Experience with industrial electrical systems",
+            "Strong customer service orientation"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Project Coordinator",
+        "location": "Dubai, UAE",
+        "type": "Contract",
+        "description": "Coordinate internal resources and vendors for the flawless execution of projects. Ensure that all projects are delivered on-time, within scope and within budget.",
+        "requirements": [
+            "Experience in project management",
+            "Strong organizational skills",
+            "Familiarity with project management software"
+        ]
+    }
+]
