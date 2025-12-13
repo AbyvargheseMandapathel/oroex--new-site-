@@ -1,10 +1,22 @@
 import React, { useState } from 'react';
 import './ProjectsTwo.css';
 import projectsData from '../../data/projects.json';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const ProjectsTwo = () => {
     const [activeProject, setActiveProject] = useState(projectsData[0]);
+
+    const handleNext = () => {
+        const currentIndex = projectsData.findIndex(p => p.id === activeProject.id);
+        const nextIndex = (currentIndex + 1) % projectsData.length;
+        setActiveProject(projectsData[nextIndex]);
+    };
+
+    const handlePrev = () => {
+        const currentIndex = projectsData.findIndex(p => p.id === activeProject.id);
+        const prevIndex = (currentIndex - 1 + projectsData.length) % projectsData.length;
+        setActiveProject(projectsData[prevIndex]);
+    };
 
     return (
         <section className="projects-two-section">
@@ -37,14 +49,39 @@ const ProjectsTwo = () => {
                         </div>
 
                         <div className="p2-details-panel">
-                            <p className="p2-desc">{activeProject.description}</p>
-                            <a href={activeProject.link} className="p2-link-btn">
-                                VIEW CASE STUDY <ArrowUpRight size={18} />
-                            </a>
+                            <div className="p2-details-text-action">
+                                <p className="p2-desc">{activeProject.description}</p>
+                                <a href={activeProject.link} className="p2-link-btn">
+                                    VIEW CASE STUDY <ArrowUpRight size={18} />
+                                </a>
+                            </div>
+
+                            {/* Mobile Navigation Controls */}
+                            <div className="p2-mobile-nav">
+                                <button className="p2-nav-btn" onClick={handlePrev}>
+                                    <ChevronLeft size={24} />
+                                </button>
+                                <div className="p2-nav-dots">
+                                    {projectsData.map((p) => (
+                                        <div
+                                            key={p.id}
+                                            className={`p2-nav-dot ${p.id === activeProject.id ? 'active' : ''}`}
+                                            onClick={() => setActiveProject(p)}
+                                        ></div>
+                                    ))}
+                                </div>
+                                <button className="p2-nav-btn" onClick={handleNext}>
+                                    <ChevronRight size={24} />
+                                </button>
+                            </div>
+
+                            <button className="p2-view-all-btn-mobile">
+                                VIEW ALL PROJECTS
+                            </button>
                         </div>
                     </div>
 
-                    {/* Right: Project List */}
+                    {/* Right: Project List (Hidden on Mobile) */}
                     <div className="p2-list-area">
                         <div className="p2-list-header">
                             <span>SELECT PROJECT</span>

@@ -295,10 +295,89 @@
     color: #e63946;
 }
 
+/* Mobile Controls (Default hidden on desktop) */
+.p2-mobile-nav {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.p2-nav-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.p2-nav-btn:active {
+    background: #e63946;
+}
+
+.p2-nav-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.p2-nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #444;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.p2-nav-dot.active {
+    background: #e63946;
+    transform: scale(1.2);
+}
+
+.p2-view-all-btn-mobile {
+    display: none;
+    width: 100%;
+    margin-top: 1rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.p2-details-text-action {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+
 /* Responsive */
 @media (max-width: 1024px) {
+    .projects-two-section {
+        padding: 4rem 1rem;
+        /* Reduce padding */
+    }
+
     .projects-two-content {
         flex-direction: column;
+        gap: 3rem;
     }
 
     .p2-display-area {
@@ -306,7 +385,8 @@
     }
 
     .p2-list-area {
-        width: 100%;
+        display: none;
+        /* Hide the vertical list on mobile */
     }
 
     .p2-title {
@@ -314,15 +394,58 @@
     }
 
     .p2-image-card {
-        height: 300px;
+        height: 350px;
+    }
+
+    .p2-overlay-id {
+        font-size: 3rem;
     }
 
     .p2-details-panel {
         flex-direction: column;
         align-items: flex-start;
+        gap: 0;
+        padding: 1.5rem;
+    }
+
+    .p2-details-text-action {
+        gap: 1.5rem;
     }
 
     .p2-desc {
         max-width: 100%;
+        font-size: 0.95rem;
+    }
+
+    .p2-link-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Show Mobile Controls */
+    .p2-mobile-nav {
+        display: flex;
+    }
+
+    .p2-view-all-btn-mobile {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .p2-title {
+        font-size: 2rem;
+    }
+
+    .p2-image-card {
+        height: 250px;
+    }
+
+    .p2-overlay-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .p2-list-item {
+        padding: 1rem 0.5rem;
     }
 }
