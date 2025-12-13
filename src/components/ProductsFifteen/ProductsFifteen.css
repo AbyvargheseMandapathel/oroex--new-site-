@@ -432,6 +432,10 @@
         overflow-x: auto;
         scroll-snap-type: x mandatory;
 
+        /* Fix starting position */
+        justify-content: flex-start;
+        align-items: flex-start;
+
         /* Full bleed breakout */
         width: calc(100% + 2rem);
         margin-left: -1rem;
