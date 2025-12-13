@@ -395,7 +395,10 @@
     .products-fifteen-section {
         height: auto;
         min-height: 100vh;
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         padding: 4rem 0;
         overflow-y: auto;
     }
@@ -404,6 +407,9 @@
         flex-direction: column;
         padding: 1rem;
         height: auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 
     /* Hide Sidebar on mobile for cleaner look */
@@ -453,11 +459,9 @@
 
     .p15-card {
         position: relative;
-        flex: 0 0 85vw;
-        /* Fixed width relative to viewport */
-        width: 85vw;
-        max-width: 400px;
-        /* Cap width for larger mobile/tablets */
+        flex: 0 0 80vw;
+        width: 80vw;
+        max-width: 380px;
         height: auto;
         max-height: none;
         transform: none !important;
@@ -468,7 +472,6 @@
         top: 0;
         left: 0;
         scroll-snap-align: center;
-        /* Snap center */
         margin-right: 0;
         background: #111;
         border: 1px solid #222;
@@ -531,13 +534,26 @@
         justify-content: center;
         text-align: center;
         background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
-        flex: 0 0 85vw;
-        width: 85vw;
-        max-width: 400px;
+        flex: 0 0 80vw;
+        width: 80vw;
+        max-width: 380px;
         scroll-snap-align: center;
         min-height: auto;
         position: relative;
         top: 0;
         margin-bottom: 0;
+        padding: 2rem;
+    }
+
+    .p15-view-more-content h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+
+    .p15-view-more-content p {
+        color: #aaa;
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
     }
 }
