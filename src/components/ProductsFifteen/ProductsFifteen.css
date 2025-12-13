@@ -1,0 +1,539 @@
+.products-fifteen-section {
+    height: 100vh;
+    width: 100%;
+    background-color: #080808;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p15-bg-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.p15-layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 2rem;
+    z-index: 10;
+}
+
+/* Sidebar */
+.p15-sidebar {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 2rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.p15-sidebar-header {
+    margin-bottom: 3rem;
+}
+
+.p15-sidebar-header h3 {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.p15-sidebar-line {
+    width: 40px;
+    height: 2px;
+    background: #e63946;
+}
+
+.p15-indicators-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.p15-indicator-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.p15-indicator-item:hover {
+    opacity: 1;
+}
+
+.p15-ind-num {
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: #e63946;
+}
+
+.p15-ind-title {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Stack Area */
+.p15-stack-area {
+    width: 75%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 2rem;
+    perspective: 1000px;
+}
+
+.p15-main-header {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    z-index: 5;
+    margin-bottom: 2rem;
+    flex-shrink: 0;
+}
+
+.p15-main-header h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.p15-subheading {
+    font-size: 1rem;
+    color: #aaa;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.p15-cards-wrapper {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p15-card {
+    position: absolute;
+    width: 90%;
+    max-width: 1000px;
+    height: 100%;
+    max-height: 60vh;
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: -20px 20px 60px rgba(0, 0, 0, 0.8);
+    will-change: transform, opacity;
+}
+
+.p15-card-content {
+    display: flex;
+    height: 100%;
+}
+
+.p15-info {
+    flex: 1;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid #222;
+    position: relative;
+}
+
+.p15-index {
+    font-size: 6rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    position: absolute;
+    top: 1rem;
+    left: 2rem;
+    line-height: 1;
+}
+
+.p15-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+}
+
+.p15-category {
+    color: #e63946;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.p15-desc {
+    color: #aaa;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+.p15-specs {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.p15-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #ddd;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+.p15-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.p15-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.p15-cta {
+    background: #e63946;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.p15-cta:hover {
+    background: #fff;
+    color: #e63946;
+}
+
+.p15-visual {
+    flex: 1.2;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.p15-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.p15-visual:hover .p15-img {
+    transform: scale(1.05);
+}
+
+.p15-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.p15-visual:hover .p15-overlay {
+    opacity: 1;
+}
+
+.p15-play-circle {
+    width: 70px;
+    height: 70px;
+    background: rgba(230, 57, 70, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    backdrop-filter: blur(5px);
+    transform: scale(1);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.p15-visual:hover .p15-play-circle {
+    transform: scale(1.1);
+}
+
+.p15-overlay span {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* View More Card */
+.p15-view-more-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+}
+
+.p15-view-more-content h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.p15-view-more-content p {
+    color: #aaa;
+    margin-bottom: 2rem;
+}
+
+.p15-view-more-btn {
+    background: transparent;
+    border: 1px solid #e63946;
+    color: #e63946;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.p15-view-more-btn:hover {
+    background: #e63946;
+    color: #fff;
+}
+
+/* Inline Video Player Styles (Scoped to p15) */
+.p15-inline-video-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p15-inline-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.p15-inline-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s ease;
+}
+
+.p15-inline-close-btn:hover {
+    background: rgba(230, 57, 70, 0.9);
+}
+
+
+/* Responsive Design - Mobile Redesign (Horizontal Carousel) */
+@media (max-width: 1024px) {
+    .products-fifteen-section {
+        height: auto;
+        min-height: 100vh;
+        display: block;
+        padding: 4rem 0;
+        overflow-y: auto;
+    }
+
+    .p15-layout {
+        flex-direction: column;
+        padding: 1rem;
+        height: auto;
+    }
+
+    /* Hide Sidebar on mobile for cleaner look */
+    .p15-sidebar {
+        display: none;
+    }
+
+    .p15-stack-area {
+        width: 100%;
+        height: auto;
+        display: block;
+        padding-bottom: 2rem;
+    }
+
+    .p15-main-header {
+        margin-bottom: 2rem;
+        position: relative;
+        z-index: 100;
+    }
+
+    .p15-cards-wrapper {
+        display: flex;
+        flex-direction: row;
+        /* Horizontal layout */
+        gap: 1rem;
+        height: auto;
+        overflow-x: auto;
+        /* Enable horizontal scroll */
+        scroll-snap-type: x mandatory;
+        /* Snap to cards */
+        padding: 1rem 1rem 2rem 1rem;
+        /* Add padding for shadow/scroll space */
+        width: 100%;
+        margin: 0;
+        -webkit-overflow-scrolling: touch;
+        /* Smooth scroll on iOS */
+    }
+
+    /* Hide scrollbar for cleaner look */
+    .p15-cards-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+
+    .p15-card {
+        position: relative;
+        flex: 0 0 85vw;
+        /* Fixed width relative to viewport */
+        width: 85vw;
+        max-width: 400px;
+        /* Cap width for larger mobile/tablets */
+        height: auto;
+        max-height: none;
+        transform: none !important;
+        opacity: 1 !important;
+        filter: none !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        margin-bottom: 0;
+        top: 0;
+        left: 0;
+        scroll-snap-align: center;
+        /* Snap center */
+        margin-right: 0;
+        background: #111;
+        border: 1px solid #222;
+        border-radius: 24px;
+        overflow: hidden;
+    }
+
+    /* Reset variations */
+    .p15-card:nth-child(even) {
+        transform: none !important;
+    }
+
+    .p15-card:last-child {
+        margin-bottom: 0;
+    }
+
+    .p15-card-content {
+        flex-direction: column-reverse;
+    }
+
+    .p15-visual {
+        width: 100%;
+        height: 250px;
+        flex: none;
+    }
+
+    .p15-info {
+        padding: 1.5rem;
+        border-right: none;
+    }
+
+    .p15-title {
+        font-size: 1.5rem;
+        margin-top: 0;
+    }
+
+    .p15-index {
+        display: none;
+    }
+
+    .p15-desc {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .p15-specs {
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .p15-view-more-card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+        flex: 0 0 85vw;
+        width: 85vw;
+        max-width: 400px;
+        scroll-snap-align: center;
+        min-height: auto;
+        position: relative;
+        top: 0;
+        margin-bottom: 0;
+    }
+}
