@@ -7,9 +7,18 @@ urlpatterns = [
     path('header-videos/', views.header_videos, name='header_videos'),
     path('services/', views.services_list, name='services_list'),
     path('homepage-services/', views.homepage_services, name='homepage_services'),
-    path('services/<int:pk>/', views.service_detail, name='service_detail'),
-    path('products/homepage/', views.products_fifteen_backend, name='products_fifteen'),
+    path('services/<slug:slug>/', views.service_detail, name='service_detail'),
+    
+    # Products
+    path('products/categories/', views.product_categories, name='product_categories'),
     path('products/', views.products_list, name='products_list'),
-    path('products/<int:pk>/', views.product_detail, name='product_detail'),
-    path('product-categories/', views.product_categories, name='product_categories'),
+    path('products/<slug:slug>/', views.product_detail, name='product_detail'),
+    path('products-fifteen-backend/', views.products_fifteen_backend, name='products_fifteen_backend'),
+
+    # Projects
+    path('projects/', views.projects_list, name='projects_list'),
+    path('projects/<slug:slug>/', views.project_detail, name='project_detail'),
+
+    # Contact
+    path('contact/', views.submit_contact, name='submit_contact'),
 ]

@@ -7,7 +7,7 @@ import Home from './components/Home/Home'
 import ServicesBackend from './components/ServicesPage/ServicesBackend'
 import ServicesDetailsTwoBackend from './components/ServiceDetails/ServicesDetailsTwoBackend'
 import ProjectsPage from './components/ProjectsPage/ProjectsPage'
-import ProjectDetails from './components/ProjectDetails/ProjectDetails'
+import ProjectDetailsBackEnd from './components/ProjectDetails/ProjectDetailsBackEnd'
 import ProductCategoriesBackend from './components/ProductCategories/ProductCategoriesBackend'
 import ProductSubcategoriesBackend from './components/ProductSubcategories/ProductSubcategoriesBackend'
 import ProductsListBackend from './components/ProductsList/ProductsListBackend'
@@ -25,13 +25,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<ServicesBackend />} />
-        <Route path="/services/:id" element={<ServicesDetailsTwoBackend />} />
+        <Route path="/services/:slug" element={<ServicesDetailsTwoBackend />} />
         <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/projects/:id" element={<ProjectDetails />} />
+        <Route path="/projects/:slug" element={<ProjectDetailsBackEnd />} />
         <Route path="/products" element={<ProductCategoriesBackend />} />
-        <Route path="/products/:category" element={<ProductSubcategoriesBackend />} />
-        <Route path="/products/:category/:subcategory" element={<ProductsListBackend />} />
-        <Route path="/products/:category/:subcategory/:id" element={<ProductDetailsBackend />} />
+        <Route path="/products/:category_slug" element={<ProductSubcategoriesBackend />} />
+        <Route path="/products/:category_slug/:subcategory_slug" element={<ProductsListBackend />} />
+        <Route path="/products/:category_slug/:subcategory_slug/:slug" element={<ProductDetailsBackend />} />
         <Route path="/faqs" element={<FaqPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/downloads" element={<DownloadsPage />} />

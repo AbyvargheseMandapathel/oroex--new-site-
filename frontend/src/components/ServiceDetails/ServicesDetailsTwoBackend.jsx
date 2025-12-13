@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './ServicesDetailsTwo.css';
+import '../RichText.css'; // Rich Text Styles
 import { getServiceDetails } from '../../api';
 import {
     ArrowLeft,
@@ -11,14 +12,14 @@ import {
 } from 'lucide-react';
 
 const ServicesDetailsTwoBackend = () => {
-    const { id } = useParams();
+    const { slug } = useParams();
     const navigate = useNavigate();
     const [service, setService] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        getServiceDetails(id)
+        getServiceDetails(slug)
             .then(data => {
                 setService(data);
                 setLoading(false);
@@ -27,7 +28,7 @@ const ServicesDetailsTwoBackend = () => {
                 console.error("Failed to fetch service details", err);
                 setLoading(false);
             });
-    }, [id]);
+    }, [slug]);
 
     if (loading) return (
         <div className="sd2-page" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

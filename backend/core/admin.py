@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from .models import User, Navbar, HeaderVideo, Service, Category, SubCategory, Product
+from .models import User, Navbar, HeaderVideo, Service, Category, SubCategory, Product, Contact, Project
 
 class UserAdmin(BaseUserAdmin):
     list_display = ('email', 'is_staff', 'is_active')
@@ -44,17 +44,20 @@ class ServiceAdmin(admin.ModelAdmin):
     list_editable = ('show_in_homepage', 'order')
     search_fields = ('title', 'description')
     list_filter = ('show_in_homepage',)
+    prepopulated_fields = {'slug': ('title',)}
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'order')
     list_editable = ('order',)
+    prepopulated_fields = {'slug': ('name',)}
 
 @admin.register(SubCategory)
 class SubCategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'category', 'order')
     list_editable = ('order',)
     list_filter = ('category',)
+    prepopulated_fields = {'slug': ('name',)}
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
@@ -62,6 +65,21 @@ class ProductAdmin(admin.ModelAdmin):
     list_editable = ('show_in_homepage', 'order')
     list_filter = ('show_in_homepage', 'subcategory__category', 'subcategory')
     search_fields = ('title', 'short_description')
+    prepopulated_fields = {'slug': ('title',)}
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('subject', 'name', 'email', 'product', 'created_at')
+    search_fields = ('name', 'email', 'subject', 'message')
+    list_filter = ('created_at',)
+    readonly_fields = ('product', 'created_at')
+
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('title', 'client', 'location', 'date', 'order')
+    list_editable = ('order',)
+    search_fields = ('title', 'description', 'client')
+    prepopulated_fields = {'slug': ('title',)}
 
 # Custom Admin Site to Group Models
 class CustomAdminSite(admin.AdminSite):
@@ -87,6 +105,15 @@ class CustomAdminSite(admin.AdminSite):
             'order': 2
         }
 
+        projects_group = {
+            'name': 'Projects Portfolio',
+            'app_label': 'projects_section',
+            'app_url': '/admin/core/project/',
+            'has_module_perms': True,
+            'models': [],
+            'order': 3
+        }
+
         # Filter and redistribute models
         new_app_list = []
         for app in app_list:
@@ -96,6 +123,8 @@ class CustomAdminSite(admin.AdminSite):
                         services_group['models'].append(model)
                     elif model['object_name'] in ['Category', 'SubCategory', 'Product']:
                         products_group['models'].append(model)
+                    elif model['object_name'] == 'Project':
+                        projects_group['models'].append(model)
                     else:
                         # Keep other core models (User, Navbar, etc) in original Core app?
                         # Or put them in a "General" group?
@@ -105,7 +134,7 @@ class CustomAdminSite(admin.AdminSite):
                 
                 # Rebuild Core app without the moved models
                 remaining_models = [m for m in app['models'] 
-                                  if m['object_name'] not in ['Service', 'Category', 'SubCategory', 'Product']]
+                                  if m['object_name'] not in ['Service', 'Category', 'SubCategory', 'Product', 'Project']]
                 
                 if remaining_models:
                     app['models'] = remaining_models
@@ -117,6 +146,8 @@ class CustomAdminSite(admin.AdminSite):
             new_app_list.insert(0, services_group)
         if products_group['models']:
             new_app_list.insert(1, products_group)
+        if projects_group['models']:
+            new_app_list.insert(2, projects_group)
             
         return new_app_list
 
@@ -135,6 +166,8 @@ def register_models_to_custom_site():
     custom_admin_site.register(Category, CategoryAdmin)
     custom_admin_site.register(SubCategory, SubCategoryAdmin)
     custom_admin_site.register(Product, ProductAdmin)
+    custom_admin_site.register(Contact, ContactAdmin)
+    custom_admin_site.register(Project, ProjectAdmin)
 
 register_models_to_custom_site()
 

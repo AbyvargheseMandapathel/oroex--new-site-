@@ -5,7 +5,7 @@ import { getProductCategories } from '../../api';
 import { ArrowLeft } from 'lucide-react';
 
 const ProductSubcategoriesBackend = () => {
-    const { category } = useParams(); // This is the category ID
+    const { category_slug } = useParams();
     const navigate = useNavigate();
     const [activeCategory, setActiveCategory] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -16,8 +16,7 @@ const ProductSubcategoriesBackend = () => {
         // Current: Fetch all and find.
         getProductCategories()
             .then(data => {
-                // Determine if category param is ID or Name. Assuming ID based on Categories page navigating to /products/:id
-                const foundCat = data.find(c => c.id.toString() === category);
+                const foundCat = data.find(c => c.slug === category_slug);
                 setActiveCategory(foundCat);
                 setLoading(false);
             })
@@ -25,7 +24,7 @@ const ProductSubcategoriesBackend = () => {
                 console.error("Failed to fetch categories", err);
                 setLoading(false);
             });
-    }, [category]);
+    }, [category_slug]);
 
     if (loading) return <div className="psc-loading">Loading Subcategories...</div>;
 
@@ -53,7 +52,7 @@ const ProductSubcategoriesBackend = () => {
                     <div
                         key={sub.id}
                         className="psc-card"
-                        onClick={() => navigate(`/products/${category}/${sub.id}`)}
+                        onClick={() => navigate(`/products/${category_slug}/${sub.slug}`)}
                     >
                         <div className="psc-image-wrapper">
                             {sub.image ? (

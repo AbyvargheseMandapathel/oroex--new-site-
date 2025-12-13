@@ -1,0 +1,223 @@
+/* Rich Text Content Styling */
+/* Applies to container classes: .pd-rich-text, .sd2-rich-text */
+
+.pd-rich-text,
+.sd2-rich-text {
+    line-height: 1.6;
+    color: #e5e7eb;
+    /* Light text for dark mode */
+    font-size: 1rem;
+}
+
+/* Headings */
+.pd-rich-text h1,
+.sd2-rich-text h1,
+.pd-rich-text h2,
+.sd2-rich-text h2,
+.pd-rich-text h3,
+.sd2-rich-text h3,
+.pd-rich-text h4,
+.sd2-rich-text h4,
+.pd-rich-text h5,
+.sd2-rich-text h5,
+.pd-rich-text h6,
+.sd2-rich-text h6 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+}
+
+.pd-rich-text h1,
+.sd2-rich-text h1 {
+    font-size: 2.5rem;
+}
+
+.pd-rich-text h2,
+.sd2-rich-text h2 {
+    font-size: 2rem;
+    border-bottom: 1px solid #374151;
+    padding-bottom: 0.5rem;
+}
+
+.pd-rich-text h3,
+.sd2-rich-text h3 {
+    font-size: 1.75rem;
+}
+
+.pd-rich-text h4,
+.sd2-rich-text h4 {
+    font-size: 1.5rem;
+}
+
+.pd-rich-text h5,
+.sd2-rich-text h5 {
+    font-size: 1.25rem;
+}
+
+.pd-rich-text h6,
+.sd2-rich-text h6 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Paragraphs */
+.pd-rich-text p,
+.sd2-rich-text p {
+    margin-bottom: 1.5rem;
+}
+
+/* Lists */
+.pd-rich-text ul,
+.sd2-rich-text ul,
+.pd-rich-text ol,
+.sd2-rich-text ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.pd-rich-text ul,
+.sd2-rich-text ul {
+    list-style-type: disc;
+}
+
+.pd-rich-text ol,
+.sd2-rich-text ol {
+    list-style-type: decimal;
+}
+
+.pd-rich-text li,
+.sd2-rich-text li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+/* Links */
+.pd-rich-text a,
+.sd2-rich-text a {
+    color: #3b82f6;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.pd-rich-text a:hover,
+.sd2-rich-text a:hover {
+    color: #60a5fa;
+    text-decoration: underline;
+}
+
+/* Blockquotes */
+.pd-rich-text blockquote,
+.sd2-rich-text blockquote {
+    border-left: 4px solid #3b82f6;
+    padding-left: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    color: #9ca3af;
+    background: rgba(59, 130, 246, 0.1);
+    padding: 1rem;
+    border-radius: 0 4px 4px 0;
+}
+
+/* Images */
+.pd-rich-text img,
+.sd2-rich-text img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    display: block;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.pd-rich-text figure,
+.sd2-rich-text figure {
+    margin: 1.5rem 0;
+}
+
+.pd-rich-text figcaption,
+.sd2-rich-text figcaption {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-top: 0.5rem;
+}
+
+/* Tables */
+.pd-rich-text table,
+.sd2-rich-text table {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.pd-rich-text th,
+.sd2-rich-text th,
+.pd-rich-text td,
+.sd2-rich-text td {
+    padding: 0.75rem;
+    border: 1px solid #374151;
+    text-align: left;
+}
+
+.pd-rich-text th,
+.sd2-rich-text th {
+    background-color: #1f2937;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.pd-rich-text tr:nth-child(even),
+.sd2-rich-text tr:nth-child(even) {
+    background-color: rgba(31, 41, 55, 0.5);
+}
+
+/* Video Embeds (Iframe) */
+.pd-rich-text iframe,
+.sd2-rich-text iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+}
+
+/* Code Blocks */
+.pd-rich-text pre,
+.sd2-rich-text pre {
+    background-color: #1f2937;
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    border: 1px solid #374151;
+}
+
+.pd-rich-text code,
+.sd2-rich-text code {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9em;
+    color: #e5e7eb;
+}
+
+.pd-rich-text :not(pre)>code,
+.sd2-rich-text :not(pre)>code {
+    background-color: rgba(31, 41, 55, 0.8);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    color: #fca5a5;
+}
+
+/* Horizontal Rule */
+.pd-rich-text hr,
+.sd2-rich-text hr {
+    border: 0;
+    height: 1px;
+    background: #374151;
+    margin: 2rem 0;
+}

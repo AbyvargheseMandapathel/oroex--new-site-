@@ -2,7 +2,7 @@ import React from 'react';
 import HeaderBackend from '../HeaderThree/HeaderBackend';
 import ServicesSevenBackend from '../ServicesSeven/ServicesSevenBackend';
 import ProductsFifteenBackend from '../ProductsFifteen/ProductsFifteenBackend';
-import ProjectsTwo from '../ProjectsTwo/ProjectsTwo';
+import ProjectsTwoBackEnd from '../ProjectsTwo/ProjectsTwoBackEnd';
 import ContactUs from '../ContactUs/ContactUs';
 
 const Home = () => {
@@ -11,7 +11,7 @@ const Home = () => {
             < HeaderBackend />
             <ServicesSevenBackend />
             <ProductsFifteenBackend />
-            <ProjectsTwo />
+            <ProjectsTwoBackEnd />
             <ContactUs />
         </div>
     );

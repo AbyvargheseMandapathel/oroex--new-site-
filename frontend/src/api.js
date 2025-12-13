@@ -33,8 +33,8 @@ export const getHomepageServices = async () => {
     return response.json();
 };
 
-export const getServiceDetails = async (id) => {
-    const response = await fetch(`${BASE_URL}/services/${id}/`);
+export const getServiceDetails = async (slug) => {
+    const response = await fetch(`${BASE_URL}/services/${slug}/`);
     if (!response.ok) {
         throw new Error('Failed to fetch service details');
     }
@@ -43,7 +43,7 @@ export const getServiceDetails = async (id) => {
 
 
 export const getHomepageProducts = async () => {
-    const response = await fetch(`${BASE_URL}/products/homepage/`);
+    const response = await fetch(`${BASE_URL}/products-fifteen-backend/`);
     if (!response.ok) {
         throw new Error('Failed to fetch homepage products');
     }
@@ -73,8 +73,24 @@ export const getFilteredProducts = async (categoryId = null, subcategoryId = nul
     return response.json();
 };
 
-export const getProductDetails = async (id) => {
-    const response = await fetch(`${BASE_URL}/products/${id}/`);
+export const submitContact = async (data) => {
+    const response = await fetch(`${BASE_URL}/contact/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+        const err = await response.json();
+        throw new Error(err.error || 'Failed to submit contact');
+    }
+    return response.json();
+};
+
+export const getProductDetails = async (slug) => {
+    const response = await fetch(`${BASE_URL}/products/${slug}/`);
     if (!response.ok) {
         throw new Error('Failed to fetch product details');
     }
@@ -82,9 +98,25 @@ export const getProductDetails = async (id) => {
 };
 
 export const getProductCategories = async () => {
-    const response = await fetch(`${BASE_URL}/product-categories/`);
+    const response = await fetch(`${BASE_URL}/products/categories/`);
     if (!response.ok) {
         throw new Error('Failed to fetch product categories');
+    }
+    return response.json();
+};
+
+export const getProjects = async () => {
+    const response = await fetch(`${BASE_URL}/projects/`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch projects');
+    }
+    return response.json();
+};
+
+export const getProjectDetails = async (slug) => {
+    const response = await fetch(`${BASE_URL}/projects/${slug}/`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch project details');
     }
     return response.json();
 };

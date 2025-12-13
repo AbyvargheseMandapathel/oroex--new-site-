@@ -55,7 +55,7 @@ const ServicesBackend = () => {
                         <div
                             key={service.id}
                             className="sp-card"
-                            onClick={() => navigate(`/services/${service.id}`)}
+                            onClick={() => navigate(`/services/${service.slug}`)}
                         >
                             <div className="sp-card-media">
                                 {service.videoUrl ? (

@@ -2,17 +2,25 @@ import React, { useState } from 'react';
 import './ContactPage.css';
 import { Mail, Phone, MapPin, Send, CheckCircle, Loader } from 'lucide-react';
 
+import { useSearchParams } from 'react-router-dom';
+import { submitContact } from '../../api';
+
 const ContactPage = () => {
+    const [searchParams] = useSearchParams();
+    const productSlug = searchParams.get('product');
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        subject: '',
-        message: ''
+        subject: productSlug ? `Inquiry about product: ${productSlug}` : '',
+        message: '',
+        product: productSlug || ''
     });
 
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [serverError, setServerError] = useState('');
 
     const validate = () => {
         const newErrors = {};
@@ -30,7 +38,6 @@ const ContactPage = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
-        // Clear error when user types
         if (errors[name]) {
             setErrors(prev => ({ ...prev, [name]: null }));
         }
@@ -45,16 +52,18 @@ const ContactPage = () => {
         }
 
         setIsSubmitting(true);
+        setServerError('');
 
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 2000));
-
-        setIsSubmitting(false);
-        setIsSuccess(true);
-        setFormData({ name: '', email: '', subject: '', message: '' });
-
-        // Reset success message after 5 seconds
-        setTimeout(() => setIsSuccess(false), 5000);
+        try {
+            await submitContact(formData);
+            setIsSubmitting(false);
+            setIsSuccess(true);
+            setFormData({ name: '', email: '', subject: '', message: '', product: '' });
+            setTimeout(() => setIsSuccess(false), 5000);
+        } catch (err) {
+            setIsSubmitting(false);
+            setServerError(err.message || 'Something went wrong. Please try again.');
+        }
     };
 
     return (
@@ -114,6 +123,7 @@ const ContactPage = () => {
                             </div>
                         ) : (
                             <form className="contact-form" onSubmit={handleSubmit}>
+                                {serverError && <div className="error-msg" style={{ marginBottom: '1rem' }}>{serverError}</div>}
                                 <div className="form-group">
                                     <label htmlFor="name">Name</label>
                                     <input

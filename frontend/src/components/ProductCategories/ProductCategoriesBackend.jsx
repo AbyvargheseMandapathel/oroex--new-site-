@@ -33,7 +33,7 @@ const ProductCategoriesBackend = () => {
                     <div
                         key={cat.id}
                         className="pcb-card"
-                        onClick={() => navigate(`/products/${cat.id}`)}
+                        onClick={() => navigate(`/products/${cat.slug}`)}
                     >
                         <div className="pcb-image-wrapper">
                             {cat.image ? (

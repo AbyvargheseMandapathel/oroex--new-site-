@@ -12,14 +12,15 @@ import {
 } from 'lucide-react';
 
 const ProductDetailsBackend = () => {
-    const { category, subcategory, id } = useParams();
+    const { category_slug, subcategory_slug, slug } = useParams();
     const navigate = useNavigate();
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
 
+
     useEffect(() => {
         window.scrollTo(0, 0);
-        getProductDetails(id)
+        getProductDetails(slug)
             .then(data => {
                 setProduct(data);
                 setLoading(false);
@@ -28,7 +29,7 @@ const ProductDetailsBackend = () => {
                 console.error("Failed to fetch product details", err);
                 setLoading(false);
             });
-    }, [id]);
+    }, [slug]);
 
     if (loading) return <div className="pdb-loading">Loading Product Details...</div>;
 
@@ -42,7 +43,7 @@ const ProductDetailsBackend = () => {
     return (
         <div className="pdb-page">
             <div className="pdb-nav-header">
-                <button className="pdb-back-btn" onClick={() => navigate(-1)}>
+                <button className="pdb-back-btn" onClick={() => navigate(`/products/${category_slug}/${subcategory_slug}`)}>
                     <ArrowLeft size={18} /> Back
                 </button>
             </div>
@@ -118,7 +119,7 @@ const ProductDetailsBackend = () => {
                     </div>
 
                     <div className="pdb-card action-card">
-                        <button className="pdb-action-btn primary" onClick={() => navigate('/contact')}>Request Quote</button>
+                        <button className="pdb-action-btn primary" onClick={() => navigate(`/contact?product=${product.slug}`)}>Request Quote</button>
                         {/* <button className="pdb-action-btn secondary">
                             <FileText size={18} /> Download Brochure
                         </button> */}
@@ -135,7 +136,7 @@ const ProductDetailsBackend = () => {
                             <div
                                 key={rel.id}
                                 className="pdb-related-card"
-                                onClick={() => navigate(`/products/${category}/${subcategory}/${rel.id}`)}
+                                onClick={() => navigate(`/products/${category_slug}/${subcategory_slug}/${rel.slug}`)}
                             >
                                 <div className="pdb-related-img-box">
                                     {rel.image ? (

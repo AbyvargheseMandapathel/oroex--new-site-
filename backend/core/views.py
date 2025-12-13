@@ -1,7 +1,8 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import get_user_model
-from .models import Navbar, HeaderVideo, Service, Category, SubCategory, Product
+from .models import Navbar, HeaderVideo, Service, Category, SubCategory, Product, Contact, Project
+from django.db.models import Q
 from django.shortcuts import get_object_or_404
 import json
 
@@ -92,9 +93,18 @@ def homepage_services(request):
     data = [get_service_data(request, s) for s in services]
     return JsonResponse(data, safe=False)
 
-def service_detail(request, pk):
-    service = get_object_or_404(Service, pk=pk)
-    data = get_service_data(request, service)
+def service_detail(request, slug):
+    service = get_object_or_404(Service, slug=slug)
+    data = {
+        'id': service.id,
+        'title': service.title,
+        'slug': service.slug,
+        'description': service.short_description,
+        'longDescription': service.long_description,
+        'image': request.build_absolute_uri(service.image_url) if service.image_url else (request.build_absolute_uri(service.image_file.url) if service.image_file else None),
+        'videoUrl': service.video_url if service.video_url else (request.build_absolute_uri(service.video_file.url) if service.video_file else None),
+        'icon': service.icon
+    }
     return JsonResponse(data)
 
 def get_product_data(request, product):
@@ -119,7 +129,7 @@ def get_product_data(request, product):
         'title': product.title,
         'category': product.subcategory.category.name,
         'subcategory': product.subcategory.name,
-        'description': product.short_description,
+        'slug': product.slug,
         'shortDescription': product.short_description,
         'longDescription': product.long_description,
         'image': image_url,
@@ -134,9 +144,31 @@ def products_fifteen_backend(request):
     Returns products marked for homepage (limit 5 for carousel + extras if needed).
     This maps to ProductsFifteen component.
     """
-    products = Product.objects.filter(show_in_homepage=True).order_by('order')[:15]
+    products = Product.objects.filter(show_in_homepage=True).order_by('order')[:5]
     data = [get_product_data(request, p) for p in products]
     return JsonResponse(data, safe=False)
+
+@csrf_exempt
+def submit_contact(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            product_slug = data.get('product')
+            product = None
+            if product_slug:
+                product = Product.objects.filter(slug=product_slug).first()
+            
+            Contact.objects.create(
+                name=data.get('name'),
+                email=data.get('email'),
+                subject=data.get('subject'),
+                message=data.get('message'),
+                product=product
+            )
+            return JsonResponse({'message': 'Query submitted successfully'}, status=201)
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=400)
+    return JsonResponse({'error': 'Invalid method'}, status=405)
 
 def products_list(request):
     """
@@ -148,15 +180,22 @@ def products_list(request):
     products = Product.objects.all().order_by('order')
     
     if subcategory_id:
-        products = products.filter(subcategory__id=subcategory_id)
+        # Check if it's a digit (ID) or slug
+        if str(subcategory_id).isdigit():
+             products = products.filter(subcategory__id=subcategory_id)
+        else:
+             products = products.filter(subcategory__slug=subcategory_id)
     elif category_id:
-        products = products.filter(subcategory__category__id=category_id)
+        if str(category_id).isdigit():
+            products = products.filter(subcategory__category__id=category_id)
+        else:
+            products = products.filter(subcategory__category__slug=category_id)
         
     data = [get_product_data(request, p) for p in products]
     return JsonResponse(data, safe=False)
 
-def product_detail(request, pk):
-    product = get_object_or_404(Product, pk=pk)
+def product_detail(request, slug):
+    product = get_object_or_404(Product, slug=slug)
     data = get_product_data(request, product)
     
     # Cascading Related Products Logic
@@ -166,13 +205,13 @@ def product_detail(request, pk):
     # 1. Try same SubCategory
     subcat_products = list(Product.objects.filter(
         subcategory=product.subcategory
-    ).exclude(pk=pk).order_by('?')[:needed])
+    ).exclude(slug=slug).order_by('?')[:needed])
     related_products.extend(subcat_products)
     
     # 2. If not enough, try same Category (different subcategories)
     if len(related_products) < needed:
         remaining = needed - len(related_products)
-        existing_ids = [p.id for p in related_products] + [pk]
+        existing_ids = [p.id for p in related_products] + [product.id]
         
         cat_products = list(Product.objects.filter(
             subcategory__category=product.subcategory.category
@@ -182,7 +221,7 @@ def product_detail(request, pk):
     # 3. If still not enough, grab ANY random products
     if len(related_products) < needed:
         remaining = needed - len(related_products)
-        existing_ids = [p.id for p in related_products] + [pk]
+        existing_ids = [p.id for p in related_products] + [product.id]
         
         random_products = list(Product.objects.exclude(
             id__in=existing_ids
@@ -191,6 +230,35 @@ def product_detail(request, pk):
 
     data['relatedProducts'] = [get_product_data(request, p) for p in related_products]
     
+    return JsonResponse(data)
+
+def get_project_data(request, project):
+    image_url = None
+    if project.image:
+        image_url = request.build_absolute_uri(project.image.url)
+    
+    return {
+        'id': project.id,
+        'title': project.title,
+        'slug': project.slug,
+        'image': image_url,
+        'description': project.description,
+        'long_description': project.long_description,
+        'client': project.client,
+        'location': project.location,
+        'date': project.date,
+        'category': project.category,
+        'video_url': project.video_url
+    }
+
+def projects_list(request):
+    projects = Project.objects.all()
+    data = [get_project_data(request, p) for p in projects]
+    return JsonResponse(data, safe=False)
+
+def project_detail(request, slug):
+    project = get_object_or_404(Project, slug=slug)
+    data = get_project_data(request, project)
     return JsonResponse(data)
 
 def product_categories(request):
@@ -207,11 +275,13 @@ def product_categories(request):
         data.append({
             'id': cat.id,
             'name': cat.name,
+            'slug': cat.slug,
             'description': cat.description,
             'image': cat_image,
             'subcategories': [{
                 'id': s.id, 
                 'name': s.name,
+                'slug': s.slug,
                 'description': s.description,
                 'image': request.build_absolute_uri(s.image.url) if s.image else None
             } for s in subs]
