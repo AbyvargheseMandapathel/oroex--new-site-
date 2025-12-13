@@ -1,0 +1,172 @@
+/* ProductsListBackend.css */
+.plb-page {
+    background-color: #0a0a0a;
+    min-height: 100vh;
+    padding: 100px 40px;
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+.plb-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #222;
+}
+
+.plb-back-btn {
+    background: transparent;
+    border: 1px solid #444;
+    color: #ccc;
+    padding: 8px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.plb-back-btn:hover {
+    background: white;
+    color: black;
+}
+
+.plb-title {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.plb-count {
+    color: #666;
+    margin-left: 10px;
+}
+
+.plb-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.plb-card {
+    background: #111;
+    border: 1px solid #1f1f1f;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, border-color 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.plb-card:hover {
+    transform: translateY(-5px);
+    border-color: #444;
+}
+
+.plb-image-container {
+    height: 220px;
+    background: #181818;
+    position: relative;
+    overflow: hidden;
+}
+
+.plb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.plb-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #1f1f1f, #2a2a2a);
+}
+
+.plb-card:hover .plb-img {
+    transform: scale(1.05);
+}
+
+.plb-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.plb-card:hover .plb-overlay {
+    opacity: 1;
+}
+
+.plb-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.plb-prod-title {
+    font-size: 1.2rem;
+    margin: 0 0 10px 0;
+}
+
+.plb-prod-features {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.plb-feat-tag {
+    background: #222;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    color: #888;
+}
+
+.plb-bottom {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.plb-price {
+    font-weight: 600;
+    color: #e63946;
+}
+
+.plb-arrow-btn {
+    background: #333;
+    border: none;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.plb-card:hover .plb-arrow-btn {
+    background: white;
+    color: black;
+}
+
+.plb-loading,
+.plb-empty {
+    text-align: center;
+    padding: 80px;
+    color: #666;
+}

@@ -1,0 +1,240 @@
+/* ServicesDetailsTwo.css */
+.sd2-page {
+    background-color: #0a0a0a;
+    color: #e0e0e0;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+}
+
+/* Hero Section */
+.sd2-hero {
+    position: relative;
+    height: 80vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sd2-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.sd2-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), #0a0a0a);
+    z-index: 2;
+}
+
+.sd2-hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 1200px;
+    padding: 0 20px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.sd2-back-btn {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.sd2-back-btn:hover {
+    background: white;
+    color: black;
+}
+
+.sd2-title {
+    font-size: 5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+    line-height: 1;
+    background: linear-gradient(45deg, #fff, #aaa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sd2-subtitle {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Main Content Layout */
+.sd2-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    position: relative;
+    z-index: 5;
+}
+
+/* Left Column: Rich Text */
+.sd2-rich-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #d1d5db;
+}
+
+.sd2-rich-text h1,
+.sd2-rich-text h2,
+.sd2-rich-text h3 {
+    color: white;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    font-weight: 700;
+}
+
+.sd2-rich-text p {
+    margin-bottom: 1.5em;
+}
+
+.sd2-rich-text ul,
+.sd2-rich-text ol {
+    margin-bottom: 1.5em;
+    padding-left: 20px;
+}
+
+.sd2-rich-text li {
+    margin-bottom: 0.5em;
+}
+
+.sd2-rich-text a {
+    color: #3b82f6;
+    text-decoration: underline;
+}
+
+/* Right Column: Sidebar */
+.sd2-sidebar {
+    position: sticky;
+    top: 40px;
+    height: fit-content;
+}
+
+.sd2-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.sd2-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sd2-feature-list {
+    list-style: none;
+    padding: 0;
+}
+
+.sd2-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sd2-feature-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.sd2-feature-icon {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.sd2-feature-text h4 {
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.sd2-feature-text p {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    line-height: 1.4;
+}
+
+.sd2-contact-btn {
+    width: 100%;
+    padding: 15px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.sd2-contact-btn:hover {
+    transform: translateY(-2px);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1024px) {
+    .sd2-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sd2-title {
+        font-size: 3rem;
+    }
+}

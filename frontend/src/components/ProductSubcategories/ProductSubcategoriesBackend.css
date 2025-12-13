@@ -1,0 +1,112 @@
+/* ProductSubcategoriesBackend.css */
+.psc-page {
+    background-color: #0a0a0a;
+    min-height: 100vh;
+    padding: 100px 40px;
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+.psc-header {
+    margin-bottom: 60px;
+    text-align: center;
+    position: relative;
+}
+
+.psc-back-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: transparent;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.psc-back-btn:hover {
+    background: white;
+    color: black;
+}
+
+.psc-title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.psc-subtitle {
+    color: #888;
+}
+
+.psc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.psc-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.psc-card:hover {
+    transform: translateY(-5px);
+    border-color: #444;
+}
+
+.psc-image-wrapper {
+    height: 180px;
+    background: #1a1a1a;
+    overflow: hidden;
+}
+
+.psc-sub-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.psc-card:hover .psc-sub-img {
+    transform: scale(1.1);
+}
+
+.psc-placeholder-img {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #222, #333);
+}
+
+.psc-content {
+    padding: 20px;
+}
+
+.psc-content h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+}
+
+.psc-content p {
+    font-size: 0.9rem;
+    color: #888;
+    margin: 0;
+}
+
+.psc-loading,
+.psc-error,
+.psc-empty {
+    text-align: center;
+    padding: 50px;
+    color: #888;
+}

@@ -1,0 +1,349 @@
+/* ProductDetailsBackend.css */
+.pdb-page {
+    background-color: #050505;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    color: #e0e0e0;
+    padding-bottom: 80px;
+}
+
+.pdb-nav-header {
+    padding: 20px 40px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.pdb-back-btn {
+    background: transparent;
+    border: 1px solid #333;
+    color: #aaa;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.pdb-back-btn:hover {
+    background: white;
+    color: black;
+}
+
+/* Header Section */
+.pdb-header {
+    text-align: center;
+    padding: 20px 20px 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.pdb-badge {
+    background: #e63946;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.pdb-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0 0 15px 0;
+    line-height: 1.1;
+    background: linear-gradient(to bottom, #ffffff, #aaaaaa);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.pdb-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 1.1rem;
+    color: #888;
+}
+
+.pdb-price {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Media Showcase */
+.pdb-showcase {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+}
+
+.pdb-media-container {
+    width: 100%;
+    background: #111;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid #222;
+    position: relative;
+    aspect-ratio: 16/9;
+    /* Maintain a nice wide aspect ratio */
+}
+
+/* For images particularly, we might not want to force aspect ratio if it cuts off details 
+   But for a consistent layout, a container is good. 
+   Inside, we use object-fit: contain to show FULL detail without crop.
+*/
+.pdb-media {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Show FULL image/video content */
+    display: block;
+    background: #000;
+    /* Letterboxing background */
+}
+
+.pdb-video-wrapper,
+.pdb-image-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Layout Main */
+.pdb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+}
+
+.pdb-section-heading {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #222;
+}
+
+.pdb-rich-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ccc;
+}
+
+/* Styled Rich Text Elements - Reused/Refined */
+.pdb-rich-text h1,
+.pdb-rich-text h2,
+.pdb-rich-text h3 {
+    color: white;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    font-weight: 700;
+}
+
+.pdb-rich-text ul {
+    list-style-type: disc !important;
+    margin-bottom: 1.5em;
+    padding-left: 1.5em !important;
+}
+
+.pdb-rich-text ol {
+    list-style-type: decimal !important;
+    margin-bottom: 1.5em;
+    padding-left: 1.5em !important;
+}
+
+.pdb-rich-text li {
+    margin-bottom: 0.5em;
+    display: list-item !important;
+}
+
+/* Sidebar */
+.pdb-sidebar {
+    position: sticky;
+    top: 40px;
+    height: fit-content;
+}
+
+.pdb-card {
+    background: #111;
+    border: 1px solid #222;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.pdb-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.text-accent {
+    color: #e63946;
+}
+
+.pdb-specs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pdb-spec-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #222;
+    color: #999;
+}
+
+.pdb-spec-item:last-child {
+    border-bottom: none;
+}
+
+.pdb-check {
+    color: #4ade80;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.pdb-action-btn {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1rem;
+    transition: transform 0.2s;
+}
+
+.pdb-action-btn.primary {
+    background: white;
+    color: black;
+}
+
+.pdb-action-btn.secondary {
+    background: transparent;
+    border: 1px solid #444;
+    color: white;
+}
+
+.pdb-action-btn:hover {
+    transform: translateY(-2px);
+}
+
+.pdb-loading,
+.pdb-error {
+    text-align: center;
+    padding: 100px;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+@media (max-width: 900px) {
+    .pdb-container {
+        grid-template-columns: 1fr;
+    }
+
+    .pdb-title {
+        font-size: 2.5rem;
+    }
+
+    .pdb-media-container {
+        aspect-ratio: 4/3;
+        /* Taller for mobile maybe? */
+    }
+}
+
+/* Related Products */
+.pdb-related {
+    max-width: 1200px;
+    margin: 60px auto 0;
+    padding: 0 20px;
+    border-top: 1px solid #222;
+    padding-top: 40px;
+}
+
+.pdb-related-title {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.pdb-related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+.pdb-related-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.pdb-related-card:hover {
+    transform: translateY(-5px);
+    border-color: #444;
+}
+
+.pdb-related-img-box {
+    height: 150px;
+    background: #1a1a1a;
+    position: relative;
+    overflow: hidden;
+}
+
+.pdb-related-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pdb-related-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #1f1f1f, #2a2a2a);
+}
+
+.pdb-related-info {
+    padding: 15px;
+}
+
+.pdb-related-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    color: #e0e0e0;
+}
+
+.pdb-related-info span {
+    font-size: 0.9rem;
+    color: #888;
+}

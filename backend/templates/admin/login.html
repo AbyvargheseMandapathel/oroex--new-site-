@@ -1,0 +1,122 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" href="{% static "admin/css/login.css" %}">
+{{ form.media }}
+<style>
+    .submit-row { display: flex; justify-content: space-between; align-items: center; }
+    #send-otp-btn { background: #417690; color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 15px; width: 100%;}
+    #send-otp-btn:hover { background: #205067; }
+    .password-input-wrapper { position: relative; }
+</style>
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} login{% endblock %}
+
+{% block usertools %}{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block nav-sidebar %}{% endblock %}
+
+{% block content_title %}{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+{% if form.errors and not form.non_field_errors %}
+<p class="errornote">
+{% blocktranslate count counter=form.errors.items|length %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktranslate %}
+</p>
+{% endif %}
+
+{% if form.non_field_errors %}
+{% for error in form.non_field_errors %}
+<p class="errornote">
+    {{ error }}
+</p>
+{% endfor %}
+{% endif %}
+
+<div id="content-main">
+
+{% if user.is_authenticated %}
+<p class="errornote">
+{% blocktranslate trimmed %}
+    You are authenticated as {{ username }}, but are not authorized to
+    access this page. Would you like to login to a different account?
+{% endblocktranslate %}
+</p>
+{% endif %}
+
+<form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+  <div class="form-row">
+    {{ form.username.errors }}
+    {{ form.username.label_tag }} {{ form.username }}
+  </div>
+  
+  <div class="form-row">
+     <button type="button" id="send-otp-btn">Send OTP to Email</button>
+  </div>
+
+  <div class="form-row">
+    {{ form.password.errors }}
+    <label for="id_password" class="required">OTP:</label> 
+    <input type="password" name="password" autocomplete="current-password" required id="id_password">
+    <input type="hidden" name="next" value="{{ next }}">
+  </div>
+  
+  {% url 'admin_password_reset' as password_reset_url %}
+  {% if password_reset_url %}
+  <div class="password-reset-link">
+    <a href="{{ password_reset_url }}">{% translate 'Forgotten your password or username?' %}</a>
+  </div>
+  {% endif %}
+  
+  <div class="submit-row">
+    <input type="submit" value="{% translate 'Log in' %}">
+  </div>
+</form>
+
+</div>
+
+<script>
+    document.getElementById('send-otp-btn').addEventListener('click', function() {
+        const email = document.getElementById('id_username').value;
+        const btn = this;
+        
+        if (!email) {
+            alert('Please enter your email first.');
+            return;
+        }
+
+        btn.disabled = true;
+        btn.innerText = 'Sending...';
+
+        fetch('/api/send-otp/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: email })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'ok') {
+                alert(data.message);
+                btn.innerText = 'OTP Sent';
+            } else {
+                alert('Error: ' + data.message);
+                btn.disabled = false;
+                btn.innerText = 'Send OTP to Email';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred.');
+            btn.disabled = false;
+            btn.innerText = 'Send OTP to Email';
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,340 @@
+/* ProductDetailsBackendOne.css */
+.pdb1-page {
+    background-color: #050505;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    color: #e0e0e0;
+}
+
+.pdb1-back-btn {
+    position: fixed;
+    top: 100px;
+    left: 40px;
+    z-index: 50;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid #333;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.pdb1-back-btn:hover {
+    background: white;
+    color: black;
+}
+
+/* Hero */
+.pdb1-hero {
+    height: 70vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.pdb1-video-bg,
+.pdb1-hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+.pdb1-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #050505, transparent 80%);
+}
+
+.pdb1-hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.pdb1-badge {
+    background: #e63946;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.pdb1-title {
+    font-size: 4rem;
+    margin: 20px 0;
+    font-weight: 800;
+}
+
+.pdb1-price-hero {
+    font-size: 1.5rem;
+    color: #ccc;
+}
+
+/* Layout */
+.pdb1-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+    position: relative;
+}
+
+.pdb1-rich-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ccc;
+}
+
+.pdb1-rich-text h1,
+.pdb1-rich-text h2,
+.pdb1-rich-text h3,
+.pdb1-rich-text h4 {
+    color: white;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    font-weight: 700;
+}
+
+.pdb1-rich-text h1 {
+    font-size: 2rem;
+}
+
+.pdb1-rich-text h2 {
+    font-size: 1.75rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.pdb1-rich-text h3 {
+    font-size: 1.5rem;
+}
+
+.pdb1-rich-text h4 {
+    font-size: 1.25rem;
+}
+
+.pdb1-rich-text p {
+    margin-bottom: 1.2em;
+}
+
+.pdb1-rich-text ul {
+    list-style-type: disc !important;
+    margin-bottom: 1.5em;
+    padding-left: 1.5em !important;
+}
+
+.pdb1-rich-text ol {
+    list-style-type: decimal !important;
+    margin-bottom: 1.5em;
+    padding-left: 1.5em !important;
+}
+
+.pdb1-rich-text li {
+    margin-bottom: 0.5em;
+    display: list-item !important;
+}
+
+.pdb1-rich-text ul ul,
+.pdb1-rich-text ol ul {
+    list-style-type: circle !important;
+    margin-bottom: 0;
+}
+
+.pdb1-rich-text ol ol,
+.pdb1-rich-text ul ol {
+    list-style-type: lower-alpha !important;
+    margin-bottom: 0;
+}
+
+.pdb1-rich-text strong,
+.pdb1-rich-text b {
+    color: #fff;
+    font-weight: 600;
+}
+
+.pdb1-rich-text a {
+    color: #e63946;
+    text-decoration: underline;
+}
+
+.pdb1-rich-text blockquote {
+    border-left: 4px solid #e63946;
+    padding-left: 20px;
+    margin: 1.5em 0;
+    color: #999;
+    font-style: italic;
+}
+
+
+.pdb1-card {
+    background: #111;
+    border: 1px solid #222;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.pdb1-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.text-accent {
+    color: #e63946;
+}
+
+.pdb1-specs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pdb1-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #222;
+    color: #999;
+}
+
+.pdb1-check {
+    color: #4ade80;
+}
+
+.pdb1-action-btn {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.2s;
+}
+
+.pdb1-action-btn.primary {
+    background: white;
+    color: black;
+}
+
+.pdb1-action-btn.secondary {
+    background: transparent;
+    border: 1px solid #444;
+    color: white;
+}
+
+.pdb1-action-btn:hover {
+    transform: translateY(-2px);
+}
+
+.pdb1-loading,
+.pdb1-error {
+    text-align: center;
+    padding: 100px;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 900px) {
+    .pdb1-container {
+        grid-template-columns: 1fr;
+    }
+
+    .pdb1-title {
+        font-size: 2.5rem;
+    }
+}
+
+/* Related Products (PDB1) */
+.pdb1-related {
+    background: #0a0a0a;
+    padding-top: 40px;
+    margin-top: 60px;
+    border-top: 1px solid #222;
+}
+
+.pdb1-related-title {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.pdb1-related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+.pdb1-related-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.pdb1-related-card:hover {
+    transform: translateY(-5px);
+    border-color: #444;
+}
+
+.pdb1-related-img-box {
+    height: 150px;
+    background: #1a1a1a;
+    position: relative;
+    overflow: hidden;
+}
+
+.pdb1-related-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pdb1-related-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #1f1f1f, #2a2a2a);
+}
+
+.pdb1-related-info {
+    padding: 15px;
+}
+
+.pdb1-related-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    color: #e0e0e0;
+}
+
+.pdb1-related-info span {
+    font-size: 0.9rem;
+    color: #888;
+}

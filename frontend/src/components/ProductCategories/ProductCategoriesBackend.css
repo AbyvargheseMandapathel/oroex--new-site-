@@ -1,0 +1,121 @@
+/* ProductCategoriesBackend.css */
+.pcb-page {
+    background-color: #0a0a0a;
+    min-height: 100vh;
+    padding: 100px 20px;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    text-align: center;
+}
+
+.pcb-title {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #ffffff, #888888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.pcb-subtitle {
+    color: #888;
+    margin-bottom: 60px;
+}
+
+.pcb-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.pcb-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+    text-align: left;
+}
+
+.pcb-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.pcb-image-wrapper {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.pcb-cat-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.pcb-placeholder-img {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+}
+
+.pcb-card:hover .pcb-cat-img {
+    transform: scale(1.05);
+}
+
+.pcb-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.pcb-overlay span {
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.pcb-card:hover .pcb-overlay {
+    opacity: 1;
+}
+
+.pcb-content {
+    padding: 25px;
+}
+
+.pcb-content h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    color: #e0e0e0;
+}
+
+.pcb-content p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #9ca3af;
+    line-height: 1.5;
+}
+
+.pcb-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #0a0a0a;
+    color: white;
+    font-size: 1.2rem;
+}
