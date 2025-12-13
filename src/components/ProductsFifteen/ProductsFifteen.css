@@ -427,19 +427,19 @@
     .p15-cards-wrapper {
         display: flex;
         flex-direction: row;
-        /* Horizontal layout */
         gap: 1rem;
         height: auto;
         overflow-x: auto;
-        /* Enable horizontal scroll */
         scroll-snap-type: x mandatory;
-        /* Snap to cards */
-        padding: 1rem 1rem 2rem 1rem;
-        /* Add padding for shadow/scroll space */
-        width: 100%;
-        margin: 0;
+
+        /* Full bleed breakout */
+        width: calc(100% + 2rem);
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding: 0 1rem 2rem 1rem;
+        /* Restore visual padding inside scroll */
+
         -webkit-overflow-scrolling: touch;
-        /* Smooth scroll on iOS */
     }
 
     /* Hide scrollbar for cleaner look */
