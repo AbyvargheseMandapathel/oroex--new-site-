@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProductCategoriesBackend.css';
 import { getProductCategories } from '../../api';
+import Loader from '../Loader/Loader';
 
 const ProductCategoriesBackend = () => {
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ const ProductCategoriesBackend = () => {
             });
     }, []);
 
-    if (loading) return <div className="pcb-loading">Loading Categories...</div>;
+    if (loading) return <Loader />;
 
     return (
         <div className="pcb-page">

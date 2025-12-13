@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './ProductsListBackend.css';
 import { getFilteredProducts } from '../../api';
+import Loader from '../Loader/Loader';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const ProductsListBackend = () => {
@@ -54,7 +55,7 @@ const ProductsListBackend = () => {
             });
     }, [category_slug, subcategory_slug]);
 
-    if (loading) return <div className="plb-loading">Loading Products...</div>;
+    if (loading) return <Loader />;
 
     return (
         <div className="plb-page">

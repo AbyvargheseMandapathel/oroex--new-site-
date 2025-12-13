@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './ServicesDetailsTwo.css';
 import '../RichText.css'; // Rich Text Styles
+import Loader from '../Loader/Loader';
 import { getServiceDetails } from '../../api';
 import {
     ArrowLeft,
@@ -30,11 +31,7 @@ const ServicesDetailsTwoBackend = () => {
             });
     }, [slug]);
 
-    if (loading) return (
-        <div className="sd2-page" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            Loading...
-        </div>
-    );
+    if (loading) return <Loader />;
 
     if (!service) {
         return (

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Loader from '../Loader/Loader';
+
 import { useNavigate } from 'react-router-dom';
 import './ServicesPage.css'; // Reusing CSS
 import { getServices } from '../../api';
@@ -38,7 +40,7 @@ const ServicesBackend = () => {
             });
     }, []);
 
-    if (loading) return <div className="services-page">Loading...</div>;
+    if (loading) return <Loader />;
 
     return (
         <div className="services-page">

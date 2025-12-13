@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ProjectsTwo.css'; // Reusing CSS
 import { getProjects } from '../../api';
+import Loader from '../Loader/Loader';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -69,7 +70,7 @@ const ProjectsTwoBackEnd = () => {
         }
     };
 
-    if (loading) return <div className="p2-loading">Loading Projects...</div>;
+    if (loading) return <Loader />;
     if (error) return <div className="p2-error">Error: {error}</div>;
     if (projects.length === 0) return <div className="p2-empty">No projects found.</div>;
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProjectsPage.css';
 import { getProjects } from '../../api';
+import Loader from '../Loader/Loader';
 import { ArrowUpRight } from 'lucide-react';
 
 const ProjectsPage = () => {
@@ -21,7 +22,7 @@ const ProjectsPage = () => {
             });
     }, []);
 
-    if (loading) return <div className="pp-loading" style={{ padding: '50px', textAlign: 'center' }}>Loading Projects...</div>;
+    if (loading) return <Loader />;
 
     return (
         <div className="projects-page">

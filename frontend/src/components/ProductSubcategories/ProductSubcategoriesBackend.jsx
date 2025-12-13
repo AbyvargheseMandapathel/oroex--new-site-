@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './ProductSubcategoriesBackend.css';
 import { getProductCategories } from '../../api';
+import Loader from '../Loader/Loader';
 import { ArrowLeft } from 'lucide-react';
 
 const ProductSubcategoriesBackend = () => {
@@ -26,7 +27,7 @@ const ProductSubcategoriesBackend = () => {
             });
     }, [category_slug]);
 
-    if (loading) return <div className="psc-loading">Loading Subcategories...</div>;
+    if (loading) return <Loader />;
 
     if (!activeCategory) return (
         <div className="psc-page">

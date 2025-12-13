@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './ProjectDetails.css'; // Reusing CSS
 import '../RichText.css'; // Rich Text Styles
+import Loader from '../Loader/Loader';
 import { getProjectDetails } from '../../api';
 import { ArrowLeft, Calendar, MapPin, Tag, User } from 'lucide-react';
 
@@ -26,7 +27,7 @@ const ProjectDetailsBackEnd = () => {
             });
     }, [slug]);
 
-    if (loading) return <div className="pd-loading">Loading Project...</div>;
+    if (loading) return <Loader />;
 
     if (error || !project) {
         return (

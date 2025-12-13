@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './ProductDetailsBackend.css';
 import { getProductDetails } from '../../api';
+import Loader from '../Loader/Loader';
 import {
     ArrowLeft,
     CheckCircle,
@@ -31,7 +32,7 @@ const ProductDetailsBackend = () => {
             });
     }, [slug]);
 
-    if (loading) return <div className="pdb-loading">Loading Product Details...</div>;
+    if (loading) return <Loader />;
 
     if (!product) return (
         <div className="pdb-page">
