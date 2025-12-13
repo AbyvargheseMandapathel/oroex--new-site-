@@ -307,24 +307,6 @@
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.p2-nav-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: #fff;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.p2-nav-btn:active {
-    background: #e63946;
-}
-
 .p2-nav-dots {
     display: flex;
     gap: 8px;

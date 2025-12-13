@@ -93,9 +93,6 @@ const ProjectsTwo = () => {
 
                             {/* Mobile Navigation Controls */}
                             <div className="p2-mobile-nav">
-                                <button className="p2-nav-btn" onClick={handlePrev}>
-                                    <ChevronLeft size={24} />
-                                </button>
                                 <div className="p2-nav-dots">
                                     {projectsData.map((p) => (
                                         <div
@@ -105,9 +102,6 @@ const ProjectsTwo = () => {
                                         ></div>
                                     ))}
                                 </div>
-                                <button className="p2-nav-btn" onClick={handleNext}>
-                                    <ChevronRight size={24} />
-                                </button>
                             </div>
 
                             <button className="p2-view-all-btn-mobile">
