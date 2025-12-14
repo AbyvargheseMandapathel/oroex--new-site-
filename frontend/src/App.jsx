@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import NavbarBackend from './components/NavbarOne/NavbarBackend'
@@ -20,11 +20,19 @@ import CareersPageBackend from './components/CareersPage/CareersPageBackend'
 import CareerDetailsBackend from './components/CareersPage/CareerDetailsBackend'
 import NotFound from './components/NotFound/NotFound'
 
+const RedirectToAdmin = () => {
+  useEffect(() => {
+    window.location.href = 'http://localhost:8001/admin';
+  }, []);
+  return null;
+};
+
 function App() {
   return (
     <>
       <NavbarBackend />
       <Routes>
+        <Route path="/admin/*" element={<RedirectToAdmin />} />
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<ServicesBackend />} />
         <Route path="/services/:slug" element={<ServicesDetailsTwoBackend />} />
