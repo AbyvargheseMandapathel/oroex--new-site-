@@ -74,6 +74,7 @@ class Navbar(models.Model):
     url = models.CharField(max_length=200)
     order = models.PositiveIntegerField(default=0)
     is_highlight = models.BooleanField(default=False, help_text="Check to highlight this item (e.g. Contact Us button)")
+    show_in_footer = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['order']
@@ -110,6 +111,7 @@ class Service(models.Model):
     image_file = models.ImageField(upload_to='services/images/', blank=True, null=True)
     order = models.PositiveIntegerField(default=0)
     show_in_homepage = models.BooleanField(default=False, help_text="Show in homepage (limit 6)")
+    show_in_footer = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -225,6 +227,85 @@ class Project(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+    
+    def __str__(self):
+        return self.title
+
+
+class Download(models.Model):
+    title = models.CharField(max_length=200)
+    type = models.CharField(max_length=100, help_text="Type of download e.g. Certificate, Profile, Brochure")
+    file = models.FileField(upload_to='downloads/files/', help_text="Upload the document (PDF, etc.)")
+    image = models.ImageField(upload_to='downloads/images/', help_text="Thumbnail image for the download")
+    description = models.TextField(help_text="Short description content")
+    order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+
+    def __str__(self):
+        return self.title
+
+
+class FAQ(models.Model):
+    question = models.CharField(max_length=255)
+    answer = models.TextField()
+    is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = "FAQ"
+        verbose_name_plural = "FAQs"
+
+    def __str__(self):
+        return self.question
+
+
+class About(models.Model):
+    title = models.CharField(max_length=200)
+    description = RichTextField()
+    image = models.ImageField(upload_to='about/', blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = "About Us"
+
+    def __str__(self):
+        return self.title
+
+
+class CompanyInfo(models.Model):
+    address = models.TextField(default="123 Industrial Zone, Tech City")
+    phone = models.CharField(max_length=50, default="+1 234 567 8900")
+    email = models.EmailField(default="info@oroex.com")
+    facebook = models.URLField(blank=True, null=True)
+    twitter = models.URLField(blank=True, null=True)
+    instagram = models.URLField(blank=True, null=True)
+    linkedin = models.URLField(blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = "Company Info"
+
+    def __str__(self):
+        return "Company Information"
+
+
+class Career(models.Model):
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True, blank=True)
+    location = models.CharField(max_length=100)
+    type = models.CharField(max_length=100, help_text="e.g. Full-time, Contract")
+    description = RichTextField()
+    is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
 
     def __str__(self):
         return self.title

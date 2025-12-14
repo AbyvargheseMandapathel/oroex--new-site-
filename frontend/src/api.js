@@ -120,3 +120,43 @@ export const getProjectDetails = async (slug) => {
     }
     return response.json();
 };
+
+export const getFaqs = async () => {
+    const response = await fetch(`${BASE_URL}/faqs/`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch FAQs');
+    }
+    return response.json();
+};
+
+export const getCareers = async () => {
+    const response = await fetch(`${BASE_URL}/careers/`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch careers');
+    }
+    return response.json();
+};
+
+export const getCareerDetails = async (slug) => {
+    const response = await fetch(`${BASE_URL}/careers/${slug}/`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch career details');
+    }
+    return response.json();
+};
+
+export const getAbout = async () => {
+    const response = await fetch(`${BASE_URL}/about/`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch about data');
+    }
+    return response.json();
+};
+
+export const getCompanyInfo = async () => {
+    const response = await fetch(`${BASE_URL}/company-info/`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch company info');
+    }
+    return response.json();
+};

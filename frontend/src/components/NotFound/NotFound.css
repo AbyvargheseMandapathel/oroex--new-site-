@@ -1,0 +1,113 @@
+.not-found-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    overflow: hidden;
+}
+
+.not-found-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    padding: 2rem;
+}
+
+.error-code {
+    font-size: 10rem;
+    font-weight: 800;
+    line-height: 1;
+    margin: 0;
+    background: linear-gradient(135deg, #fff 0%, #666 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.9;
+    letter-spacing: -5px;
+}
+
+.error-divider {
+    width: 60px;
+    height: 4px;
+    background-color: #D32F2F;
+    margin: 1.5rem 0;
+    border-radius: 2px;
+}
+
+.error-heading {
+    font-size: 2.5rem;
+    margin: 0 0 1rem;
+    font-weight: 600;
+}
+
+.error-description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.home-button {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #D32F2F;
+    border-color: #D32F2F;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(211, 47, 47, 0.3);
+}
+
+/* Ambient Background */
+.ambient-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    z-index: 1;
+}
+
+.c-1 {
+    width: 400px;
+    height: 400px;
+    background: #D32F2F;
+    top: -100px;
+    left: -100px;
+}
+
+.c-2 {
+    width: 500px;
+    height: 500px;
+    background: #444;
+    bottom: -150px;
+    right: -150px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .error-code {
+        font-size: 6rem;
+    }
+
+    .error-heading {
+        font-size: 1.8rem;
+    }
+}

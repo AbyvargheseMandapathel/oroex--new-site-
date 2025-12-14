@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Footer.css';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import logo from '../../assets/logo.svg';
+import { getNavbars, getServices, getCompanyInfo } from '../../api';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
+    const [quickLinks, setQuickLinks] = useState([]);
+    const [footerServices, setFooterServices] = useState([]);
+    const [companyInfo, setCompanyInfo] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const navbars = await getNavbars();
+                const services = await getServices();
+                const info = await getCompanyInfo();
+
+                setQuickLinks(navbars.filter(item => item.showInFooter));
+                setFooterServices(services.filter(item => item.showInFooter));
+                setCompanyInfo(info);
+            } catch (error) {
+                console.error("Error fetching footer data:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    const currentYear = new Date().getFullYear();
+
     return (
         <footer className="footer-section">
             <div className="footer-container">
@@ -18,21 +44,22 @@ const Footer = () => {
                     <div className="footer-col">
                         <h3>Quick Links</h3>
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Projects</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Contact</a></li>
+                            {quickLinks.map((link) => (
+                                <li key={link.id || link.label}>
+                                    <Link to={link.link}>{link.label}</Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
                     <div className="footer-col">
                         <h3>Services</h3>
                         <ul>
-                            <li><a href="#">Industrial Panels</a></li>
-                            <li><a href="#">Explosion Proof</a></li>
-                            <li><a href="#">Automation</a></li>
-                            <li><a href="#">Maintenance</a></li>
+                            {footerServices.map((service) => (
+                                <li key={service.id}>
+                                    <Link to={`/services/${service.slug}`}>{service.title}</Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
@@ -40,28 +67,38 @@ const Footer = () => {
                         <h3>Contact Us</h3>
                         <div className="contact-item">
                             <MapPin size={18} />
-                            <span>123 Industrial Zone, Tech City</span>
+                            <span>{companyInfo ? companyInfo.address : "123 Industrial Zone, Tech City"}</span>
                         </div>
                         <div className="contact-item">
                             <Phone size={18} />
-                            <span>+1 234 567 8900</span>
+                            <span>{companyInfo ? companyInfo.phone : "+1 234 567 8900"}</span>
                         </div>
                         <div className="contact-item">
                             <Mail size={18} />
-                            <span>info@oroex.com</span>
+                            <span>{companyInfo ? companyInfo.email : "info@oroex.com"}</span>
                         </div>
                     </div>
                 </div>
 
                 <div className="footer-bottom">
                     <div className="footer-copyright">
-                        &copy; 2025 OroEx. All rights reserved.
+                        &copy; {currentYear} OroEx. All rights reserved.
                     </div>
                     <div className="footer-socials">
-                        <a href="#" className="social-icon"><Facebook size={20} /></a>
-                        <a href="#" className="social-icon"><Twitter size={20} /></a>
-                        <a href="#" className="social-icon"><Instagram size={20} /></a>
-                        <a href="#" className="social-icon"><Linkedin size={20} /></a>
+                        {companyInfo?.facebook && <a href={companyInfo.facebook} target="_blank" rel="noopener noreferrer" className="social-icon"><Facebook size={20} /></a>}
+                        {companyInfo?.twitter && <a href={companyInfo.twitter} target="_blank" rel="noopener noreferrer" className="social-icon"><Twitter size={20} /></a>}
+                        {companyInfo?.instagram && <a href={companyInfo.instagram} target="_blank" rel="noopener noreferrer" className="social-icon"><Instagram size={20} /></a>}
+                        {companyInfo?.linkedin && <a href={companyInfo.linkedin} target="_blank" rel="noopener noreferrer" className="social-icon"><Linkedin size={20} /></a>}
+
+                        {/* Fallbacks if no data yet (optional, or just show nothing) */}
+                        {!companyInfo && (
+                            <>
+                                <a href="#" className="social-icon"><Facebook size={20} /></a>
+                                <a href="#" className="social-icon"><Twitter size={20} /></a>
+                                <a href="#" className="social-icon"><Instagram size={20} /></a>
+                                <a href="#" className="social-icon"><Linkedin size={20} /></a>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>

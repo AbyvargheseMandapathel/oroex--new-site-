@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import './DownloadsPage.css';
 import downloadsData from '../../data/downloads.json';
-import { FileText, Download, FileCode, CheckCircle } from 'lucide-react';
+import { FileText, Download, FileCode, CheckCircle, BookOpen, Shield } from 'lucide-react';
 
 const DownloadsPage = () => {
+    const [activeTab, setActiveTab] = useState('All');
+
+    // Extract unique types from data for tabs
+    const tabs = useMemo(() => {
+        const types = [...new Set(downloadsData.map(item => item.type))];
+        return ['All', ...types];
+    }, []);
+
+    const filteredDownloads = useMemo(() => {
+        if (activeTab === 'All') return downloadsData;
+        return downloadsData.filter(item => item.type === activeTab);
+    }, [activeTab]);
+
     const getIcon = (type) => {
         switch (type) {
             case 'Certificate': return <CheckCircle size={32} />;
             case 'Profile': return <FileCode size={32} />;
+            case 'Brochure': return <BookOpen size={32} />;
+            case 'Policy': return <Shield size={32} />;
             default: return <FileText size={32} />;
         }
     };
@@ -19,9 +34,23 @@ const DownloadsPage = () => {
                 <p className="downloads-subtitle">Access our certifications, brochures, and company profiles.</p>
             </div>
 
+            <div className="downloads-tabs-container">
+                <div className="downloads-tabs">
+                    {tabs.map(tab => (
+                        <button
+                            key={tab}
+                            className={`downloads-tab ${activeTab === tab ? 'active' : ''}`}
+                            onClick={() => setActiveTab(tab)}
+                        >
+                            {tab}
+                        </button>
+                    ))}
+                </div>
+            </div>
+
             <div className="downloads-grid">
-                {downloadsData.map((item, index) => (
-                    <div key={index} className="download-card">
+                {filteredDownloads.map((item) => (
+                    <div key={item.id} className="download-card">
                         <div className="download-thumbnail-wrapper">
                             <img src={item.image} alt={item.title} className="download-thumbnail" />
                         </div>
@@ -52,6 +81,12 @@ const DownloadsPage = () => {
                     </div>
                 ))}
             </div>
+
+            {filteredDownloads.length === 0 && (
+                <div className="no-downloads-message">
+                    <p>No downloads available for this category.</p>
+                </div>
+            )}
         </div>
     );
 };

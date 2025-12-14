@@ -21,4 +21,20 @@ urlpatterns = [
 
     # Contact
     path('contact/', views.submit_contact, name='submit_contact'),
+
+    # Downloads
+    path('downloads/', views.downloads_list, name='downloads_list'),
+
+    # FAQs
+    path('faqs/', views.faq_list, name='faq_list'),
+
+    # Careers
+    path('careers/', views.career_list, name='career_list'),
+    path('careers/<slug:slug>/', views.career_detail, name='career_detail'),
+
+    # About
+    path('about/', views.about_detail, name='about_detail'),
+
+    # Company Info
+    path('company-info/', views.company_info, name='company_info'),
 ]

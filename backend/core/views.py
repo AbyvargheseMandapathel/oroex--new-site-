@@ -1,7 +1,70 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import get_user_model
-from .models import Navbar, HeaderVideo, Service, Category, SubCategory, Product, Contact, Project
+from .models import Navbar, HeaderVideo, Service, Category, SubCategory, Product, Contact, Project, Download, FAQ, Career, About, CompanyInfo
+
+# ...
+
+def about_detail(request):
+    about = About.objects.first()
+    data = {}
+    if about:
+        data = {
+            'title': about.title,
+            'description': about.description,
+            'image': request.build_absolute_uri(about.image.url) if about.image else None
+        }
+    return JsonResponse(data)
+
+def company_info(request):
+    info = CompanyInfo.objects.first()
+    data = {}
+    if info:
+        data = {
+            'address': info.address,
+            'phone': info.phone,
+            'email': info.email,
+            'facebook': info.facebook,
+            'twitter': info.twitter,
+            'instagram': info.instagram,
+            'linkedin': info.linkedin,
+        }
+    return JsonResponse(data)
+
+# ...
+
+def faq_list(request):
+    faqs = FAQ.objects.filter(is_active=True).order_by('order', '-created_at')
+    data = [{
+        'id': f.id,
+        'question': f.question,
+        'answer': f.answer
+    } for f in faqs]
+    return JsonResponse(data, safe=False)
+
+def career_list(request):
+    careers = Career.objects.filter(is_active=True).order_by('order', '-created_at')
+    data = [{
+        'id': c.id,
+        'title': c.title,
+        'slug': c.slug,
+        'location': c.location,
+        'type': c.type,
+        'description': c.description, # RichTextField returns HTML
+    } for c in careers]
+    return JsonResponse(data, safe=False)
+
+def career_detail(request, slug):
+    career = get_object_or_404(Career, slug=slug)
+    data = {
+        'id': career.id,
+        'title': career.title,
+        'slug': career.slug,
+        'location': career.location,
+        'type': career.type,
+        'description': career.description,
+    }
+    return JsonResponse(data)
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 import json
@@ -29,33 +92,35 @@ def navbar_list(request):
     data = [
         {
             'label': item.label,
-            'link': item.url,  # Frontend uses 'link', model uses 'url'. Let's map it.
-            'is_highlight': item.is_highlight
+            'link': item.url, 
+            'is_highlight': item.is_highlight,
+            'showInFooter': item.show_in_footer
         }
         for item in items
     ]
     return JsonResponse(data, safe=False)
 
 def header_videos(request):
+    # ... (no change, but easier to just replace block if simpler, here I will skip replace if not needed)
     videos = HeaderVideo.objects.filter(is_active=True).order_by('order')
     data = []
+    # ... (abbreviated content check, I will only replace navbar_list separately if possible or keep context)
     for video in videos:
-        # Prioritize file upload over URL if both exist, or return whichever is present.
-        url = None
-        if video.video_file:
-            # request.build_absolute_uri is good for full URLs
-            url = request.build_absolute_uri(video.video_file.url)
-        elif video.video_url:
-            url = video.video_url
-            
-        if url:
-            data.append({
-                'id': video.id,
-                'videoUrl': url
-            })
+         url = None
+         if video.video_file:
+             url = request.build_absolute_uri(video.video_file.url)
+         elif video.video_url:
+             url = video.video_url
+             
+         if url:
+             data.append({
+                 'id': video.id,
+                 'videoUrl': url
+             })
     return JsonResponse(data, safe=False)
 
 def get_service_data(request, service):
+    # ... (Previous helper code) ...
     # Helper to format service data with media URL prioritization
     video_url = None
     if service.video_file:
@@ -69,18 +134,18 @@ def get_service_data(request, service):
     elif service.image_url:
         image_url = service.image_url
 
-    # Fallback: if no video but image exists, use image as videoUrl
-    # Frontend expects 'videoUrl' for the background media.
     final_media_url = video_url if video_url else image_url
 
     return {
         'id': service.id,
         'title': service.title,
+        'slug': service.slug,  # Ensure slug is here
         'icon': service.icon,
-        'description': service.short_description, # Frontend list uses this
+        'description': service.short_description, 
         'shortDescription': service.short_description,
         'longDescription': service.long_description,
-        'videoUrl': final_media_url, 
+        'videoUrl': final_media_url,
+        'showInFooter': service.show_in_footer
     }
 
 def services_list(request):
@@ -287,6 +352,42 @@ def product_categories(request):
             } for s in subs]
         })
     return JsonResponse(data, safe=False)
+
+
+def get_download_data(request, download):
+    image_url = None
+    if download.image:
+        image_url = request.build_absolute_uri(download.image.url)
+    
+    file_url = None
+    file_size = "Unknown"
+    if download.file:
+        file_url = request.build_absolute_uri(download.file.url)
+        try:
+            size_bytes = download.file.size
+            if size_bytes < 1024 * 1024:
+                file_size = f"{size_bytes / 1024:.1f} KB"
+            else:
+                file_size = f"{size_bytes / (1024 * 1024):.1f} MB"
+        except:
+             pass
+
+    return {
+        'id': download.id,
+        'title': download.title,
+        'type': download.type,
+        'description': download.description,
+        'link': file_url,
+        'image': image_url,
+        'size': file_size
+    }
+
+def downloads_list(request):
+    downloads = Download.objects.all().order_by('order', '-created_at')
+    data = [get_download_data(request, d) for d in downloads]
+    return JsonResponse(data, safe=False)
+
+
 
 
 

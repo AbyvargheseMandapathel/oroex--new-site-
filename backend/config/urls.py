@@ -28,3 +28,10 @@ from django.conf.urls.static import static
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+from django.urls import re_path
+from django.views.generic.base import RedirectView
+
+urlpatterns += [
+    re_path(r'^(?!admin|api|static|media).*$', RedirectView.as_view(url='http://localhost:5173/404', permanent=False)),
+]

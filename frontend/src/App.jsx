@@ -12,11 +12,13 @@ import ProductCategoriesBackend from './components/ProductCategories/ProductCate
 import ProductSubcategoriesBackend from './components/ProductSubcategories/ProductSubcategoriesBackend'
 import ProductsListBackend from './components/ProductsList/ProductsListBackend'
 import ProductDetailsBackend from './components/ProductDetails/ProductDetailsBackend'
-import FaqPage from './components/FaqPage/FaqPage'
-import AboutPage from './components/AboutPage/AboutPage'
-import DownloadsPage from './components/DownloadsPage/DownloadsPage'
+import FAQBackend from './components/FaqPage/FAQBackend'
+import AboutPageBackend from './components/AboutPage/AboutPageBackend'
+import DownloadsPageBackend from './components/DownloadsPage/DownloadsPageBackend'
 import ContactPage from './components/ContactPage/ContactPage'
-import CareersPage from './components/CareersPage/CareersPage'
+import CareersPageBackend from './components/CareersPage/CareersPageBackend'
+import CareerDetailsBackend from './components/CareersPage/CareerDetailsBackend'
+import NotFound from './components/NotFound/NotFound'
 
 function App() {
   return (
@@ -32,11 +34,14 @@ function App() {
         <Route path="/products/:category_slug" element={<ProductSubcategoriesBackend />} />
         <Route path="/products/:category_slug/:subcategory_slug" element={<ProductsListBackend />} />
         <Route path="/products/:category_slug/:subcategory_slug/:slug" element={<ProductDetailsBackend />} />
-        <Route path="/faqs" element={<FaqPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/downloads" element={<DownloadsPage />} />
+        <Route path="/faqs" element={<FAQBackend />} />
+        <Route path="/about" element={<AboutPageBackend />} />
+        <Route path="/downloads" element={<DownloadsPageBackend />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/careers" element={<CareersPage />} />
+        <Route path="/careers" element={<CareersPageBackend />} />
+        <Route path="/careers/:slug" element={<CareerDetailsBackend />} />
+        <Route path="/404" element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </>
