@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import './DownloadsPage.css';
 import { FileText, Download, FileCode, CheckCircle, BookOpen, Shield } from 'lucide-react';
 import Loader from '../Loader/Loader';
+import { fetchDownloads } from '../../api';
 
 const DownloadsPageBackend = () => {
     const [downloads, setDownloads] = useState([]);
@@ -10,13 +11,9 @@ const DownloadsPageBackend = () => {
     const [activeTab, setActiveTab] = useState('All');
 
     useEffect(() => {
-        const fetchDownloads = async () => {
+        const loadDownloads = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/downloads/');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch downloads');
-                }
-                const data = await response.json();
+                const data = await fetchDownloads();
                 setDownloads(data);
                 setLoading(false);
             } catch (err) {
@@ -26,7 +23,7 @@ const DownloadsPageBackend = () => {
             }
         };
 
-        fetchDownloads();
+        loadDownloads();
     }, []);
 
     // Extract unique types from data for tabs

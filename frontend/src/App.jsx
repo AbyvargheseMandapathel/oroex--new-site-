@@ -18,6 +18,7 @@ import DownloadsPageBackend from './components/DownloadsPage/DownloadsPageBacken
 import ContactPage from './components/ContactPage/ContactPage'
 import CareersPageBackend from './components/CareersPage/CareersPageBackend'
 import CareerDetailsBackend from './components/CareersPage/CareerDetailsBackend'
+import SearchResultsPage from './components/Search/SearchResultsPage'
 import NotFound from './components/NotFound/NotFound'
 
 const RedirectToAdmin = () => {
@@ -48,6 +49,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/careers" element={<CareersPageBackend />} />
         <Route path="/careers/:slug" element={<CareerDetailsBackend />} />
+        <Route path="/search" element={<SearchResultsPage />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -6,8 +6,8 @@ from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 @admin.register(Navbar)
 class NavbarAdmin(admin.ModelAdmin):
-    list_display = ('label', 'url', 'order', 'is_highlight', 'show_in_footer')
-    list_editable = ('order', 'is_highlight', 'show_in_footer')
+    list_display = ('label', 'url', 'order', 'is_highlight', 'show_in_footer', 'show_in_navbar')
+    list_editable = ('order', 'is_highlight', 'show_in_footer', 'show_in_navbar')
     search_fields = ('label', 'url')
 
 # ... (NavbarAdmin) ...

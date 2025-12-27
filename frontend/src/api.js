@@ -14,7 +14,6 @@ export const getHeaderVideos = async () => {
         throw new Error('Failed to fetch header videos');
     }
     return response.json();
-    return response.json();
 };
 
 export const getServices = async () => {
@@ -157,6 +156,22 @@ export const getCompanyInfo = async () => {
     const response = await fetch(`${BASE_URL}/company-info/`);
     if (!response.ok) {
         throw new Error('Failed to fetch company info');
+    }
+    return response.json();
+};
+
+export const fetchDownloads = async () => {
+    const response = await fetch(`${BASE_URL}/downloads/`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch downloads');
+    }
+    return response.json();
+};
+
+export const searchGlobal = async (query) => {
+    const response = await fetch(`${BASE_URL}/search/?q=${encodeURIComponent(query)}`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch search results');
     }
     return response.json();
 };

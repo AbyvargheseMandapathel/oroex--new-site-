@@ -1,14 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import './NavbarOne.css'; // Reusing the CSS
 import logo from '../../assets/logo.svg';
-import { X, ChevronDown } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { X, ChevronDown, Search } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 import { getNavbars } from '../../api';
 
 const NavbarBackend = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [menuItems, setMenuItems] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    const navigate = useNavigate();
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        if (searchQuery.trim()) {
+            navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+            setIsSearchOpen(false);
+            setSearchQuery('');
+        }
+    };
 
     // Placeholder gallery images (kept from original)
     const galleryImages = [
@@ -23,7 +35,8 @@ const NavbarBackend = () => {
     useEffect(() => {
         getNavbars()
             .then(data => {
-                setMenuItems(data);
+                const filtered = data.filter(item => item.showInNavbar);
+                setMenuItems(filtered);
                 setLoading(false);
             })
             .catch(err => {
@@ -43,7 +56,7 @@ const NavbarBackend = () => {
                     </Link>
                 </div>
 
-                <div className="navbar-one-links">
+                <div className={`navbar-one-links ${isSearchOpen ? 'hidden' : ''}`}>
                     {menuItems.map((item, index) => {
                         // If it's not a highlight item, render as normal link
                         if (!item.is_highlight) {
@@ -57,21 +70,48 @@ const NavbarBackend = () => {
                     })}
                 </div>
 
+
+
+                {/* Render Highlight Button (e.g. Contact Us) */}
+                {/* Action Area: Search + Contact Button */}
+                <div className="navbar-one-action-group">
+                    <div className={`navbar-search-container ${isSearchOpen ? 'active' : ''}`}>
+                        {isSearchOpen ? (
+                            <form onSubmit={handleSearchSubmit} className="navbar-search-form">
+                                <input
+                                    type="text"
+                                    placeholder="Search..."
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    autoFocus
+                                    className="navbar-search-input"
+                                />
+                                <button type="button" className="search-close-btn" onClick={() => setIsSearchOpen(false)}>
+                                    <X size={20} />
+                                </button>
+                            </form>
+                        ) : (
+                            <button className="navbar-search-trigger" onClick={() => setIsSearchOpen(true)}>
+                                <Search size={20} />
+                            </button>
+                        )}
+                    </div>
+
+                    <div className="navbar-one-action">
+                        {menuItems.filter(item => item.is_highlight).map((item, index) => (
+                            <Link key={index} to={item.link} className="contact-btn">
+                                {item.label.toUpperCase()}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+
                 <div className="navbar-one-mobile-menu" onClick={() => setIsMenuOpen(true)}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 12H21" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M3 6H21" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M3 18H21" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                </div>
-
-                {/* Render Highlight Button (e.g. Contact Us) */}
-                <div className="navbar-one-action">
-                    {menuItems.filter(item => item.is_highlight).map((item, index) => (
-                        <Link key={index} to={item.link} className="contact-btn">
-                            {item.label.toUpperCase()}
-                        </Link>
-                    ))}
                 </div>
             </nav>
 

@@ -51,6 +51,13 @@
     /* Match button color */
 }
 
+.navbar-one-action-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Spacing between search and button */
+}
+
 .navbar-one-action .contact-btn {
     background-color: #d3002d;
     /* Red color from image */
@@ -227,5 +234,173 @@
 
     .navbar-one {
         padding: 10px 20px;
+    }
+}
+
+/* Search Styles */
+.navbar-search-container {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    /* Space between search and contact button */
+}
+
+.navbar-search-trigger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-search-trigger:hover {
+    background-color: #f5f5f5;
+    color: #d3002d;
+}
+
+.navbar-one-links.hidden {
+    display: none;
+}
+
+.navbar-search-container.active {
+    flex-grow: 1;
+    margin-right: 15px;
+    justify-content: flex-end;
+}
+
+.navbar-search-form {
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+    padding: 5px 15px;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 400px;
+    /* Adjust as needed */
+    animation: slideIn 0.3s ease;
+}
+
+.navbar-search-input {
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 5px;
+    flex-grow: 1;
+    font-size: 14px;
+    color: #333;
+}
+
+.search-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.search-close-btn:hover {
+    color: #333;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        width: 50px;
+    }
+
+    to {
+        opacity: 1;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-one-links {
+        display: none;
+    }
+
+    .navbar-one-action {
+        display: none;
+    }
+
+    .navbar-one-mobile-menu {
+        display: block;
+        cursor: pointer;
+        margin-left: 15px;
+        /* Space between search and menu */
+    }
+
+    .navbar-one {
+        padding: 10px 20px;
+        justify-content: space-between;
+        /* Logo left, others right */
+    }
+
+    .navbar-one-action-group {
+        margin-left: auto;
+        /* Push to right */
+        gap: 5px;
+    }
+
+    .navbar-search-container {
+        margin-right: 0;
+        /* Clear desktop margin */
+    }
+
+    /* When search is active on mobile, it needs to take over */
+    .navbar-search-container.active {
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: auto;
+        z-index: 20;
+        background: white;
+        margin-right: 0;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 30px;
+        padding: 5px;
+    }
+
+    .navbar-one-logo {
+        transition: opacity 0.2s;
+    }
+
+    /* Hide other elements when search is active */
+    .navbar-search-container.active~.navbar-one-logo,
+    .navbar-search-container.active~.navbar-one-mobile-menu {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* Since we moved mobile menu AFTER action group, the sibling selector ~ might not work for logo if logo is before.
+       Actually Logo is before action group. Sibling selector only works for following siblings.
+       
+       Structure: 
+       1. Logo
+       2. Action Group (Search)
+       3. Mobile Menu
+       
+       Search.active is inside Action Group. We can't select parent siblings with CSS.
+       
+       Alternative: Make search container fixed or absolute covering the whole navbar?
+       Or jus let it expand over them with z-index.
+    */
+
+    .navbar-search-container.active {
+        /* Covering the navbar */
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        /* ... same as above */
     }
 }

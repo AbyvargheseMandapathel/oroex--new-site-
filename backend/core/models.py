@@ -75,6 +75,7 @@ class Navbar(models.Model):
     order = models.PositiveIntegerField(default=0)
     is_highlight = models.BooleanField(default=False, help_text="Check to highlight this item (e.g. Contact Us button)")
     show_in_footer = models.BooleanField(default=False)
+    show_in_navbar = models.BooleanField(default=True)
 
     class Meta:
         ordering = ['order']

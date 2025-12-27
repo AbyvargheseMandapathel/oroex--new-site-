@@ -91,10 +91,12 @@ def navbar_list(request):
     items = Navbar.objects.all().order_by('order')
     data = [
         {
+            'id': item.id,
             'label': item.label,
             'link': item.url, 
             'is_highlight': item.is_highlight,
-            'showInFooter': item.show_in_footer
+            'showInFooter': item.show_in_footer,
+            'showInNavbar': item.show_in_navbar
         }
         for item in items
     ]
@@ -392,3 +394,45 @@ def downloads_list(request):
 
 
 
+
+def global_search(request):
+    query = request.GET.get('q', '').strip()
+    if not query:
+        return JsonResponse({'products': [], 'services': [], 'projects': []})
+
+    # 1. Search Products
+    products = Product.objects.filter(
+        Q(title__icontains=query) | 
+        Q(short_description__icontains=query) |
+        Q(long_description__icontains=query) |
+        Q(features__icontains=query)
+    ).order_by('-created_at')[:10]
+
+    products_data = [get_product_data(request, p) for p in products]
+
+    # 2. Search Services
+    services = Service.objects.filter(
+        Q(title__icontains=query) | 
+        Q(short_description__icontains=query) |
+        Q(long_description__icontains=query)
+    ).order_by('order')[:10]
+    
+    services_data = [get_service_data(request, s) for s in services]
+
+    # 3. Search Projects
+    projects = Project.objects.filter(
+        Q(title__icontains=query) | 
+        Q(description__icontains=query) |
+        Q(long_description__icontains=query) |
+        Q(client__icontains=query) |
+        Q(location__icontains=query) |
+        Q(category__icontains=query)
+    ).order_by('-date')[:10]
+
+    projects_data = [get_project_data(request, p) for p in projects]
+
+    return JsonResponse({
+        'products': products_data,
+        'services': services_data,
+        'projects': projects_data
+    })

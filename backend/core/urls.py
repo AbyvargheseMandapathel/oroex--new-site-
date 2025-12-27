@@ -37,4 +37,7 @@ urlpatterns = [
 
     # Company Info
     path('company-info/', views.company_info, name='company_info'),
+
+    # Search
+    path('search/', views.global_search, name='global_search'),
 ]
