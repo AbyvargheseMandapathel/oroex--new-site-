@@ -5,17 +5,10 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    # for production, avoid bind mounts:
-    # volumes:
-    #   - ./backend:/app
     ports:
       - "8001:8001"
     environment:
       DEBUG: "0"
-      # SECRET_KEY: ${SECRET_KEY}
-      # DATABASE_URL: ${DATABASE_URL}
-      # replace with gunicorn if you have it:
-      # command: gunicorn your_project.wsgi:application --bind 0.0.0.0:8001 --workers 3
     command: python manage.py runserver 0.0.0.0:8001
 
   frontend:
