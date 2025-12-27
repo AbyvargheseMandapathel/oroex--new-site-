@@ -1,18 +1,22 @@
-# Use an official Node runtime as a parent image
 FROM node:18-alpine
 
-# Set work directory
 WORKDIR /app
 
-# Install dependencies
-COPY package.json package-lock.json* ./
-RUN npm install
+# Install system deps (important for native modules)
+RUN apk add --no-cache python3 make g++
 
-# Copy project files
+# Copy dependency files first (cache optimization)
+COPY package.json package-lock.json* ./
+
+# Clean install (better than npm install)
+RUN npm ci --legacy-peer-deps
+
+# Copy rest of the code
 COPY . .
 
-# Expose port (5173 for Vite)
-EXPOSE 5173
+# Build frontend (Vite / Next / React)
+RUN npm run build
 
-# Run dev server
-CMD ["npm", "run", "dev", "--", "--host"]
+EXPOSE 3000
+
+CMD ["npm", "run", "preview"]
