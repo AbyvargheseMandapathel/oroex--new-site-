@@ -23,7 +23,9 @@ import NotFound from './components/NotFound/NotFound'
 
 const RedirectToAdmin = () => {
   useEffect(() => {
-    window.location.href = 'http://localhost:8001/admin';
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8001/api';
+    const adminUrl = apiUrl.replace('/api', '/admin');
+    window.location.href = adminUrl;
   }, []);
   return null;
 };
