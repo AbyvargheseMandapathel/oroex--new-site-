@@ -1,28 +1,35 @@
-version: '3.8'
+version: "3.8"
 
 services:
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    volumes:
-      - ./backend:/app
+    # for production, avoid bind mounts:
+    # volumes:
+    #   - ./backend:/app
     ports:
       - "8001:8001"
     environment:
-      - DEBUG=1
+      DEBUG: "0"
+      # SECRET_KEY: ${SECRET_KEY}
+      # DATABASE_URL: ${DATABASE_URL}
+      # replace with gunicorn if you have it:
+      # command: gunicorn your_project.wsgi:application --bind 0.0.0.0:8001 --workers 3
     command: python manage.py runserver 0.0.0.0:8001
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
+      args:
+        VITE_API_URL: http://69.62.77.40:8001/api
+    # no source bind mount in production
+    # volumes:
+    #   - ./frontend:/app
     ports:
-      - "5180:5173"
+      - "5180:4173" # Mapping host 5180 to container 4173
     environment:
-      - VITE_API_URL=http://69.62.77.40:8001/api
+      VITE_API_URL: http://69.62.77.40:8001/api
     depends_on:
       - backend
