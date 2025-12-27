@@ -1,7 +1,7 @@
-version: "3.8"
-
 services:
   backend:
+    image: oroex-backend:latest
+    container_name: oroex-backend
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -19,6 +19,8 @@ services:
     command: python manage.py runserver 0.0.0.0:8001
 
   frontend:
+    image: oroex-frontend:latest
+    container_name: oroex-frontend
     build:
       context: ./frontend
       dockerfile: Dockerfile
