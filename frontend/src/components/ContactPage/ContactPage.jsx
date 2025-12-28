@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ContactPage.css';
 import { Mail, Phone, MapPin, Send, CheckCircle, Loader } from 'lucide-react';
 
 import { useSearchParams } from 'react-router-dom';
-import { submitContact } from '../../api';
+import { submitContact, getCompanyInfo } from '../../api';
 
 const ContactPage = () => {
     const [searchParams] = useSearchParams();
@@ -17,10 +17,23 @@ const ContactPage = () => {
         product: productSlug || ''
     });
 
+    const [companyInfo, setCompanyInfo] = useState(null);
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [serverError, setServerError] = useState('');
+
+    useEffect(() => {
+        const fetchInfo = async () => {
+            try {
+                const data = await getCompanyInfo();
+                setCompanyInfo(data);
+            } catch (error) {
+                console.error("Failed to fetch company info", error);
+            }
+        };
+        fetchInfo();
+    }, []);
 
     const validate = () => {
         const newErrors = {};
@@ -86,7 +99,7 @@ const ContactPage = () => {
                                 </div>
                                 <div className="info-text">
                                     <h4>Our Location</h4>
-                                    <p>Dubai, United Arab Emirates</p>
+                                    <p>{companyInfo?.address || 'Loading...'}</p>
                                 </div>
                             </div>
 
@@ -96,7 +109,7 @@ const ContactPage = () => {
                                 </div>
                                 <div className="info-text">
                                     <h4>Phone Number</h4>
-                                    <p>+971 56 412 9562</p>
+                                    <p>{companyInfo?.phone || 'Loading...'}</p>
                                 </div>
                             </div>
 
@@ -106,7 +119,7 @@ const ContactPage = () => {
                                 </div>
                                 <div className="info-text">
                                     <h4>Email Address</h4>
-                                    <p>info@oroex.com</p>
+                                    <p>{companyInfo?.email || 'Loading...'}</p>
                                 </div>
                             </div>
                         </div>
@@ -196,7 +209,7 @@ const ContactPage = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
