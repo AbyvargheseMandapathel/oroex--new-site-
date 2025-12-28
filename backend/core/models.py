@@ -1,7 +1,9 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.core.mail import send_mail
 from django.db import models
 from django.utils import timezone
 from django.core.exceptions import ValidationError
+from django.conf import settings
 import random
 import datetime
 import string
@@ -54,9 +56,21 @@ class User(AbstractBaseUser, PermissionsMixin):
         self.otp = f"{random.randint(100000, 999999)}"
         self.otp_created_at = timezone.now()
         self.save()
-        # In a real app, send email here.
-        # For now, we will print it to console or just assume it's sent.
-        print(f"OTP for {self.email} is {self.otp}")
+        
+        # Send OTP via email
+        try:
+            send_mail(
+                'Your OTP Code',
+                f'Your OTP code is {self.otp}. It expires in 5 minutes.',
+                settings.DEFAULT_FROM_EMAIL,
+                [self.email],
+                fail_silently=False,
+            )
+            print(f"OTP email sent to {self.email}")
+        except Exception as e:
+            print(f"Failed to send OTP email: {e}")
+            
+        # print(f"OTP for {self.email} is {self.otp}")
         return self.otp
 
     def verify_otp(self, otp_code):

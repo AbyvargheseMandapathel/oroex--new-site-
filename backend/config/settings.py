@@ -145,3 +145,13 @@ AUTHENTICATION_BACKENDS = ['core.backends.EmailOTPBackend', 'django.contrib.auth
 CORS_ALLOW_ALL_ORIGINS = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'edxfr3q@gmail.com'
+EMAIL_HOST_PASSWORD = 'rxso chfi dlqd agvz'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
